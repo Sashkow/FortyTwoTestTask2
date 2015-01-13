@@ -2,5 +2,4 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
 def main_page(request):
-	pass
-	# return render(request,"hello/base.html",{})
+	return render(request,"hello/base.html",{})

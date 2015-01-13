@@ -17,4 +17,8 @@ class MainPageTestCase(TestCase):
 		response = self.client.get(reverse('main-page'))
 		self.assertEquals(response.status_code, 200)
 
+	def test_context_contains_needed_data(self):
+		response = self.client.get(reverse('main-page'))
+		self.assertTrue('person' in response.context)
+
 

@@ -63,6 +63,7 @@ class PersonModelTestCase(TestCase):
         """
         test __str__ method returns first_name last_name
         """
+
         user = User.objects.get(username='admin')
         person = Person(user=user)
         self.assertEquals(person.__str__(), "Olexandr Lykhenko")
@@ -92,9 +93,10 @@ class PersonFormTestCase(TestCase):
     """
     test PersonForm modelform from admin.py
     """
+    fixtures = ['test_data.json']
+
     def setUp(self):
         self.factory = RequestFactory()
-
 
     def test_form_gets_values_from_instance_user_on_init(self):
         """

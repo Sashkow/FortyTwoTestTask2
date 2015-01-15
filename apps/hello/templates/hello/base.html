@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    	{% load staticfiles %}
+        {% load staticfiles %}        
         <meta charset="utf-8">
         <title>{% block pagetitle%} 42 Coffee Cups Test Assignment {% endblock %}</title>
+         
         {% block csslinks %} 
-    	{% endblock %}
+        {% endblock %}
+
+        <link rel="stylesheet" type="text/css" href="/static/hello/style.css">    
+
         <meta http-equiv="X-UA-Compatible" content="chrome=IE7" />
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
@@ -18,11 +22,11 @@
 
     </head>
 
-	<body>
-		<h1>{% block title %}42 Coffee Cups Test Assignment {% endblock %}</h1>
+    <body>
+        <h1>{% block title %}42 Coffee Cups Test Assignment {% endblock %}</h1>
 
-		{% block content %}
-			no content
-		{% endblock %}
-	</body>
+        {% block content %}
+            no content
+        {% endblock %}
+    </body>
 </html>

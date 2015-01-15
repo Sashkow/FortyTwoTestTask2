@@ -1,3 +1,6 @@
+"""
+hello app tests
+"""
 from django.test import TestCase
 
 from django.core.urlresolvers import reverse
@@ -10,9 +13,10 @@ from django.contrib.auth.models import User
 from apps.hello.admin import PersonForm
 
 
-
-
-class MainPageTestCase(TestCase):
+class MainPageViewTestCase(TestCase):
+    """
+    tests for main-page view
+    """
     fixtures = ['test_data.json']
 
     def setUp(self):
@@ -26,7 +30,7 @@ class MainPageTestCase(TestCase):
         response = self.client.get(reverse('main-page'))
         self.assertEquals(response.status_code, 200)
 
-    def test_context_contains_needed_data(self):
+    def test_context_exist_and_correct(self):
         """
         test main_page view renders page with data taken from models
         """
@@ -55,34 +59,34 @@ class PersonModelTestCase(TestCase):
     """
     fixtures = ['test_data.json']
 
-    def test_person_str_returns_first_and_last_name(self):
+    def test_person__str__(self):
         """
-        test __str__ method returns proper value
+        test __str__ method returns first_name last_name
         """
-        u = User.objects.get(username='admin')
-        p = Person(user=u)
-        self.assertEquals(p.__str__(), "Olexandr Lykhenko")
+        user = User.objects.get(username='admin')
+        person = Person(user=user)
+        self.assertEquals(person.__str__(), "Olexandr Lykhenko")
 
-    def test_person_properties_name_surname_email(self):
+    def test_person_properties_change_user(self):
         """
         test getter and setter for name, surname, email peroperties
         test Person change affects User change
         """
-        u = User.objects.get(username='admin')
-        p = Person(user=u)
-        self.assertEquals(p.name, "Olexandr")
-        self.assertEquals(p.surname, "Lykhenko")
-        self.assertEquals(p.email, "lykhenko.olexandr@gmail.com")
-        p.name = "Ololoshka"
-        p.surname = "Trololo"
-        p.email = "ololo@lol.lol"
-        self.assertEquals(p.name, "Ololoshka")
-        self.assertEquals(p.surname, "Trololo")
-        self.assertEquals(p.email, "ololo@lol.lol")
+        user = User.objects.get(username='admin')
+        person = Person(user=user)
+        self.assertEquals(person.name, "Olexandr")
+        self.assertEquals(person.surname, "Lykhenko")
+        self.assertEquals(person.email, "lykhenko.olexandr@gmail.com")
+        person.name = "Ololoshka"
+        person.surname = "Trololo"
+        person.email = "ololo@lol.lol"
+        self.assertEquals(person.name, "Ololoshka")
+        self.assertEquals(person.surname, "Trololo")
+        self.assertEquals(person.email, "ololo@lol.lol")
 
-        self.assertEquals(u.first_name, "Ololoshka")
-        self.assertEquals(u.last_name, "Trololo")
-        self.assertEquals(u.email, "ololo@lol.lol")
+        self.assertEquals(user.first_name, "Ololoshka")
+        self.assertEquals(user.last_name, "Trololo")
+        self.assertEquals(user.email, "ololo@lol.lol")
 
 class PersonFormTestCase(TestCase):
     """
@@ -105,9 +109,9 @@ class PersonFormTestCase(TestCase):
                                  'surname': 'Lykhenko',
                                  'email': 'lykhenko.olexandr@gmail.com',
                                 }
-        
-        self.assertTrue(all(item in personform.initial.items() 
-            for item in personfields_wishdict.items()))
+
+        self.assertTrue(all(item in personform.initial.items() \
+                        for item in personfields_wishdict.items()))
 
 
     def test_form_saves_values_to_instance_user_on_save(self):

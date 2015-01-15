@@ -6,6 +6,10 @@ from apps.hello.models import Person
 
 # admin.site.register(Person)
 class PersonForm(ModelForm):
+    """
+    ModelForm to edit model:`Pesron` and partially
+    model:`User` models' fields in
+    """
     class Meta:
         model = Person
         exclude = ('user',)
@@ -15,6 +19,9 @@ class PersonForm(ModelForm):
     email = forms.EmailField(required=False)
 
     def __init__(self, *args, **kwargs):
+        """
+        override: loads initial model:`User` data to form fields
+        """
         if 'instance' in kwargs:
             instance = kwargs['instance']
             initial = kwargs.get('initial', {})
@@ -25,6 +32,9 @@ class PersonForm(ModelForm):
         super(PersonForm, self).__init__(*args, **kwargs)
 
     def save(self, commit=True):
+        """
+        override: saves model:`User` data on form commit
+        """
         instance = super(PersonForm, self).save(commit)
 
         user = instance.user
@@ -36,10 +46,14 @@ class PersonForm(ModelForm):
 
 
 class PersonAdmin(admin.ModelAdmin):
+    """
+    overriden model:`Person` ModelAdmin class show some model:`User`'s fields
+    in context of mosel:`Person`'s admin change form
+    """
 
-    list_display = ('user', 'name', 'surname', 'birth_date',
+    list_display = ('user', 'name', 'surname', 'birth_date', \
      'bio', 'email', 'jabber', 'skype', 'contacts')
-    fields = ['name', 'surname', 'birth_date',
+    fields = ['name', 'surname', 'birth_date', \
      'bio', 'email', 'jabber', 'skype', 'contacts']
 
     form = PersonForm

@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 
 
 class Person(models.Model):
+    """
+    Model to store my name, surname, date of birth, bio, contacts in
+    access to model:`User` fields provided via properties
+    """
     user = models.OneToOneField(User)
-    # name = models.OneToOneField(User.first_name)
-    # surname = user.last_name
     birth_date = models.DateField(null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     contacts = models.TextField(null=True, blank=True)

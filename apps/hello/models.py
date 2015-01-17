@@ -3,7 +3,7 @@ app hello models
 """
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
+
 
 
 
@@ -57,7 +57,7 @@ class RequestData(models.Model):
     method = models.CharField(max_length=4, null=True, blank=True)
     args = models.TextField(null=True, blank=True)
     username = models.CharField(max_length=30, null=True, blank=True)
-    pub_date = models.DateTimeField('date published', default=timezone.now())
+    pub_date = models.DateTimeField('date published')
 
     def __str__(self):
         return " ".join([str(field.name) + ":" + \

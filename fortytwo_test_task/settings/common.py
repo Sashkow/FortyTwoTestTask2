@@ -31,6 +31,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
+
 
 # Application definition
 
@@ -41,18 +43,20 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.admindocs',
     # 'django_nose',
     'south',
 
     'apps.hello',
 )
 
-# # Use nose to run all tests
+# # # Use nose to run all tests
 # TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # # Tell nose to measure coverage on the 'foo' and 'bar' apps
 # NOSE_ARGS = [
-#     # '--with-coverage',
+#     '--with-coverage',
 #     '--cover-package=apps/hello',
 # ]
 
@@ -63,6 +67,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'apps.hello.middleware.RequestStore'
 )
 
 ROOT_URLCONF = 'fortytwo_test_task.urls'

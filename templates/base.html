@@ -1,9 +1,14 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        {% load staticfiles %}        
         <meta charset="utf-8">
-        <title>{% block title %}{% endblock title %}Site Name</title>
+        <title>{% block pagetitle%} 42 Coffee Cups Test Assignment {% endblock %}</title>
+         
+        {% block csslinks %} 
+        {% endblock %}
+
+        <link rel="stylesheet" type="text/css" href="/static/hello/style.css">    
 
         <meta http-equiv="X-UA-Compatible" content="chrome=IE7" />
 
@@ -11,12 +16,17 @@
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-        <link rel="stylesheet" href="{% static 'css/screen.css' %}" media="screen, projection"/>
+        <!-- <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection"/> -->
 
-        {% block extra_head %}{% endblock extra_head %}
+        
 
     </head>
-    <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
-        {% block content %}{% endblock content %}
+
+    <body>
+        <h1>{% block title %}42 Coffee Cups Test Assignment {% endblock %}</h1>
+
+        {% block content %}
+            no content
+        {% endblock %}
     </body>
 </html>

@@ -7,6 +7,7 @@
 *.esproj
 .idea
 .Ds_Store
+.coverage
 *~
 git_ignore
 build

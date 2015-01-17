@@ -6,7 +6,20 @@ import pickle
 
 class RequestStore(object):
     def process_request(self, request):
-        pickled_request = pickle.dumps(request.REQUEST)
-        requstdata = RequestData(pickled_request=pickled_request)
+        if request.method == 'POST':
+            request_args = request.POST
+        else:
+            request_args = request.GET
+
+        if 'user' in dir(request) and request.user.username!="":
+            username = request.user.username
+        else:
+            username = 'AnonymusUser'
+
+        requstdata = RequestData(path=request.path, \
+                                 method=request.method, \
+                                 args=request_args, \
+                                 username=username, \
+                                 )
         requstdata.save()
         

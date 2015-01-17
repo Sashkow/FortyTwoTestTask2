@@ -4,8 +4,11 @@ from django.core.urlresolvers import reverse
 # from django.test import Client
 from django.test.client import RequestFactory
 
-from apps.hello.models import Person
+from apps.hello.models import Person, RequestData
 from django.contrib.auth.models import User
+
+import pickle
+
 
 class PersonModelTestCase(TestCase):
     """
@@ -42,3 +45,17 @@ class PersonModelTestCase(TestCase):
         self.assertEquals(user.first_name, "Ololoshka")
         self.assertEquals(user.last_name, "Trololo")
         self.assertEquals(user.email, "ololo@lol.lol")
+
+
+class RequestDataTestCase(TestCase):
+    fixtures = ['test_data.json']
+    def test(self):
+        self.client.get(reverse('main-page'))
+        requestdata = RequestData.objects.latest('pub_date')
+        # print requestdata
+        # print requestdata.pickled_request
+
+
+
+
+

@@ -4,7 +4,7 @@ app hello models
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+import pickle
 
 
 class Person(models.Model):
@@ -46,11 +46,21 @@ class Person(models.Model):
 
         return " ".join([self.name, self.surname])
 
+
 class RequestData(models.Model):
-    pickled_request = models.TextField(default="Empty")
+    class Meta:
+        """
+        RequestModelMeta class
+        """
+        ordering = ('-pub_date', )
+
+    path = models.CharField(max_length=2000, null=True, blank=True)
+    method = models.CharField(max_length=4, null=True, blank=True)
+    args = models.TextField(null=True, blank=True)
+    username = models.CharField(max_length=30, null=True, blank=True)
     pub_date = models.DateTimeField('date published', default=timezone.now())
 
-    # def __str__(self):
-    #     return str(self.pub_date) + " " + \
-    #      str(self.pickled_request)[:100] + "..."
+    def __str__(self):
+        return " ".join([str(field.name)+":"+str(getattr(self, field.name)) \
+            for field in self._meta.fields])
 

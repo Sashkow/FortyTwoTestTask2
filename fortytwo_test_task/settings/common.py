@@ -51,12 +51,12 @@ INSTALLED_APPS = (
     'apps.hello',
 )
 
-# # Use nose to run all tests
+# # # Use nose to run all tests
 # TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # # Tell nose to measure coverage on the 'foo' and 'bar' apps
 # NOSE_ARGS = [
-#     # '--with-coverage',
+#     '--with-coverage',
 #     '--cover-package=apps/hello',
 # ]
 

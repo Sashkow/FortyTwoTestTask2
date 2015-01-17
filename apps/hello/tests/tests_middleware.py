@@ -8,9 +8,11 @@ from django.contrib.auth.models import User
 from apps.hello.models import RequestData
 from apps.hello.middleware import RequestStore
 
-import pickle
 
-class RequestStoreMiddlewareTest(TestCase): 
+class RequestStoreMiddlewareTestCase(TestCase): 
+    """
+    RequestStore middleware test case
+    """
     fixtures = ['test_data.json']
     def setUp(self):
         self.factory = RequestFactory()

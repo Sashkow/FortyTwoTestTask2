@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.test.client import RequestFactory
 from apps.hello.models import Person
 
+
 class MainPageViewTestCase(TestCase):
     """
     tests for main-page view
@@ -47,6 +48,9 @@ class MainPageViewTestCase(TestCase):
 
 
 class RequestDataViewTestCase(TestCase):
+    """
+    requests view test case
+    """
     def test_view_returns_200(self):
         "test view returns code 200 in response"
         response = self.client.get(reverse('requests'))

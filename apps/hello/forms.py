@@ -2,12 +2,17 @@ from django import forms
 from django.forms import ModelForm
 from apps.hello.models import Person
 
+
 class PersonForm(ModelForm):
     """
     ModelForm to edit :model:`Pesron` and partially
     :model:`auth.User` models' fields in
     """
+
     class Meta:
+        """
+        PersonForm's Meta class
+        """
         model = Person
         exclude = ('user',)
 

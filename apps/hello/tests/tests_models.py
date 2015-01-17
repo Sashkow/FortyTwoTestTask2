@@ -7,8 +7,6 @@ from django.test.client import RequestFactory
 from apps.hello.models import Person, RequestData
 from django.contrib.auth.models import User
 
-import pickle
-
 
 class PersonModelTestCase(TestCase):
     """
@@ -50,10 +48,13 @@ class PersonModelTestCase(TestCase):
 class RequestDataTestCase(TestCase):
     fixtures = ['test_data.json']
     def test(self):
+        """
+        test __str__ outputs verbose object description
+        """
         self.client.get(reverse('main-page'))
         requestdata = RequestData.objects.latest('pub_date')
-        # print requestdata
-        # print requestdata.pickled_request
+        self.assertTrue("id:1 path:/ method:GET args:<QueryDict: {}> \
+username:AnonymusUser" in requestdata.__str__())
 
 
 

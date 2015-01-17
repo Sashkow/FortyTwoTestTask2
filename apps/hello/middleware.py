@@ -1,5 +1,6 @@
 """middleware"""
 from apps.hello.models import RequestData
+from django.utils import timezone
 
 class RequestStore(object):
     """
@@ -23,5 +24,6 @@ class RequestStore(object):
                                  method=request.method, \
                                  args=request_args, \
                                  username=username, \
+                                 pub_date=timezone.now(), \
                                  )
         requstdata.save()

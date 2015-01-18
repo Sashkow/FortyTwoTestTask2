@@ -28,6 +28,7 @@ def requests(request):
     return render(request, template_name, context)
 
 def edit(request):
-    pass
+    return render(request, "hello/index.html", {})
+    
 
 

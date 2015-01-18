@@ -84,7 +84,6 @@ class EditTestCase(TestCase):
     #     """
     #     test edit view renders page with data taken from models
     #     """
-
     #     personfields_wishdict = {'name': 'Olexandr',
     #                              'surname': 'Lykhenko',
     #                              'email': 'lykhenko.olexandr@gmail.com',

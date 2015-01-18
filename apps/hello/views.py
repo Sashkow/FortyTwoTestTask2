@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 from apps.hello.models import Person, RequestData
 
 
-
 def main_page(request):
     """
     A view that presents my name, surname, date of birth, bio, contacts

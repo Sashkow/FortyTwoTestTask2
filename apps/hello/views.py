@@ -33,7 +33,7 @@ def edit(request):
     A view that allows to edit content from 'main' view
     """
     person = Person.objects.get(user__username='admin')
-    form = PersonForm()
+    form = PersonForm(instance=person)
     return render(request, "hello/index.html", {'form': form})
     
 

@@ -69,20 +69,42 @@ class RequestDataViewTestCase(TestCase):
         self.assertTrue("First Ten Requests" in response.content)
         
         
-class EditTestCase(TestCase):
+class EditViewTestCase(TestCase):
     """
     edit view test case
     """
-    def test_edit_view_returns_200(self):
+    fixtures = ['test_data.json']
+    def test_returns_200(self):
         """
         test edit view returns 200 in response 
         """
         response = self.client.get(reverse('edit'))
         self.assertEquals(response.status_code, 200)
 
-    def test_edit_view_has_form_in_context(self):
+    def test_has_form_in_context(self):
         """
         test edit view returns form in response.context 
         """
         response = self.client.get(reverse('edit'))
         self.assertTrue('form' in response.context)
+
+    def test_correct_form_data_on_get(self):
+        """
+        test response.context['form'] contains correct data after GET request
+        """
+        personfields_wishdict = {'name': 'Olexandr',
+                         'surname': 'Lykhenko',
+                         'email': 'lykhenko.olexandr@gmail.com',
+                         'birth_date': '1991-02-01',
+                         'bio': "Dnipropetrovsk",
+                         'contacts': 'linkedin',
+                         'jabber': 'sashko@42cc.co',
+                         'skype': 'sashkointelcore2duo',
+                                }
+
+        response = self.client.get(reverse('edit'))
+        form = response.context['form']
+        
+        for name, value in personfields_wishdict.iteritems():
+            self.assertTrue(name in form.initial)
+            self.assertTrue(value in str(form.initial[name]))

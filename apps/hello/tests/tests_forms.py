@@ -41,7 +41,6 @@ class PersonFormTestCase(TestCase):
         test that, form saves name, surname, email values to corresponding User
         when commiting form
         """
-
         person = Person.objects.get(user__username='admin')
         personform = PersonForm(instance=person, data={'name': 'has_changed'})
 

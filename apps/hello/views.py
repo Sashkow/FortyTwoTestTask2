@@ -7,14 +7,15 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from apps.hello.models import Person, RequestData
 
+from apps.hello.forms import PersonForm
+
 
 def main(request):
     """
     A view that presents my name, surname, date of birth, bio, contacts
     on the main page.
     """
-    user = User.objects.get(username='admin')
-    person = Person.objects.get(user=user)
+    person = Person.objects.get(user__username='admin')
     return render(request, "hello/index.html", {'person': person})
 
 def requests(request):
@@ -28,7 +29,12 @@ def requests(request):
     return render(request, template_name, context)
 
 def edit(request):
-    return render(request, "hello/index.html", {})
+    """
+    A view that allows to edit content from 'main' view
+    """
+    person = Person.objects.get(user__username='admin')
+    form = PersonForm()
+    return render(request, "hello/index.html", {'form': form})
     
 
 

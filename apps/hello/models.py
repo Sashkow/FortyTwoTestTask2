@@ -5,8 +5,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
-
 class Person(models.Model):
     """
     Model to store my name, surname, date of birth, bio,

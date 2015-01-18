@@ -34,13 +34,13 @@ def edit(request):
     A view that allows to edit content from 'main' view
     """
     person = Person.objects.get(user__username='admin')
-    # if request.method == 'POST':
-    #     form = PersonForm(instance=person, data=request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #     return HttpResponseRedirect(reverse('main'))
-    # else:
-    form = PersonForm(instance=person)
+    if request.method == 'POST':
+        form = PersonForm(instance=person, data=request.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse('main'))
+    else:
+        form = PersonForm(instance=person)
 
     return render(request, "hello/edit.html", {'form': form})
     

@@ -159,5 +159,5 @@ TEMPLATE_CONTEXT_PROCESSORS =  (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
 
-    # "apps.hello.context_processors.django_settings",
+    "apps.hello.context_processors.django_settings",
     )

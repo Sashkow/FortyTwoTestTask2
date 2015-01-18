@@ -93,13 +93,13 @@ class EditViewTestCase(TestCase):
         test response.context['form'] contains correct data after GET request
         """
         personfields_wishdict = {'name': 'Olexandr',
-                         'surname': 'Lykhenko',
-                         'email': 'lykhenko.olexandr@gmail.com',
-                         'birth_date': '1991-02-01',
-                         'bio': "Dnipropetrovsk",
-                         'contacts': 'linkedin',
-                         'jabber': 'sashko@42cc.co',
-                         'skype': 'sashkointelcore2duo',
+                                 'surname': 'Lykhenko',
+                                 'email': 'lykhenko.olexandr@gmail.com',
+                                 'birth_date': '1991-02-01',
+                                 'bio': "Dnipropetrovsk",
+                                 'contacts': 'linkedin',
+                                 'jabber': 'sashko@42cc.co',
+                                 'skype': 'sashkointelcore2duo',
                                 }
 
         response = self.client.get(reverse('edit'))
@@ -108,3 +108,11 @@ class EditViewTestCase(TestCase):
         for name, value in personfields_wishdict.iteritems():
             self.assertTrue(name in form.initial)
             self.assertTrue(value in str(form.initial[name]))
+
+    def test_redirects_to_main_on_post(self):
+        """
+        test viwew redirects to main page after POST request
+        """
+        response = self.client.post(reverse('edit'))
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals('http://testserver/',response.url) 

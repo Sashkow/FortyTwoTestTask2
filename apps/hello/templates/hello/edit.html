@@ -1,0 +1,27 @@
+{% extends "hello/base.html" %}
+
+{% block pagetitle %} Main Page {% endblock %}
+
+{% block csslinks %} 
+<link rel="stylesheet" type="text/css" href="/static/hello/style.css">    
+{% endblock %}
+
+
+{% block content %}
+    <div class="left">
+        <div>Name: {{form.name}}</div>
+        <div>Last name: {{form.surname}}</div>
+        <div>Date of birth: {{form.birth_date}}</div>
+        <div>Bio: <pre>{{form.bio}}</pre></div>
+    </div>
+    <div class="right">
+        <div>Contacts</div>
+        <br>
+        <div>Email: {{form.email}}</div>
+        <div>Jabber: {{form.jabber}}</div>
+        <div>Skype: {{form.skype}}</div>
+        <div>Other contacts: <pre>{{form.contacts}}</pre></div>
+    </div>
+    <div><a href="{% url 'requests' %}">requests</a></div>
+{% endblock %}
+

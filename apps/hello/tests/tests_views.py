@@ -80,24 +80,9 @@ class EditTestCase(TestCase):
         response = self.client.get(reverse('edit'))
         self.assertEquals(response.status_code, 200)
 
-    # def test_context_exist_and_correct(self):
-    #     """
-    #     test edit view renders page with data taken from models
-    #     """
-    #     personfields_wishdict = {'name': 'Olexandr',
-    #                              'surname': 'Lykhenko',
-    #                              'email': 'lykhenko.olexandr@gmail.com',
-    #                              'birth_date': '1991-02-01',
-    #                              'bio': "Dnipropetrovsk",
-    #                              'contacts': 'linkedin',
-    #                              'jabber': 'sashko@42cc.co',
-    #                              'skype': 'sashkointelcore2duo',
-    #                             }
-
-    #     response = self.client.get(reverse('main'))
-    #     self.assertTrue('person' in response.context)
-    #     person = response.context['person']
-    #     self.assertTrue(isinstance(person, Person))
-    #     for name, value in personfields_wishdict.iteritems():
-    #         self.assertTrue(hasattr(person, name))
-    #         self.assertTrue(value in str(person.__getattribute__(name)))
+    def test_edit_view_has_form_in_context(self):
+        """
+        test edit view returns form in response.context 
+        """
+        response = self.client.get(reverse('edit'))
+        self.assertTrue('form' in response.context)

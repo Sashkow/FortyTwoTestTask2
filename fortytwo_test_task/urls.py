@@ -12,6 +12,6 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^hello/', include('apps.hello.urls')),
-    url(r'^$', views.main_page, name='main-page'),
+    url(r'^$', views.main, name='main'),
 
 )

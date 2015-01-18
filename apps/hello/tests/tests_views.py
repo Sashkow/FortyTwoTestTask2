@@ -8,7 +8,7 @@ from apps.hello.models import Person
 
 class MainPageViewTestCase(TestCase):
     """
-    tests for main-page view
+    tests for main view
     """
     fixtures = ['test_data.json']
 
@@ -20,7 +20,7 @@ class MainPageViewTestCase(TestCase):
         test main_page renders page successfully
         i. e. returns response with status code 200
         """
-        response = self.client.get(reverse('main-page'))
+        response = self.client.get(reverse('main'))
         self.assertEquals(response.status_code, 200)
 
     def test_context_exist_and_correct(self):
@@ -38,7 +38,7 @@ class MainPageViewTestCase(TestCase):
                                  'skype': 'sashkointelcore2duo',
                                 }
 
-        response = self.client.get(reverse('main-page'))
+        response = self.client.get(reverse('main'))
         self.assertTrue('person' in response.context)
         person = response.context['person']
         self.assertTrue(isinstance(person, Person))
@@ -69,5 +69,36 @@ class RequestDataViewTestCase(TestCase):
         self.assertTrue("First Ten Requests" in response.content)
         
         
+class EditTestCase(TestCase):
+    """
+    edit view test case
+    """
+    def test_edit_view_returns_200(self):
+        """
+        test edit view returns 200 in response 
+        """
+        response = self.client.get(reverse('edit'))
+        self.assertEquals(response.status_code, 200)
 
+    # def test_context_exist_and_correct(self):
+    #     """
+    #     test edit view renders page with data taken from models
+    #     """
 
+    #     personfields_wishdict = {'name': 'Olexandr',
+    #                              'surname': 'Lykhenko',
+    #                              'email': 'lykhenko.olexandr@gmail.com',
+    #                              'birth_date': '1991-02-01',
+    #                              'bio': "Dnipropetrovsk",
+    #                              'contacts': 'linkedin',
+    #                              'jabber': 'sashko@42cc.co',
+    #                              'skype': 'sashkointelcore2duo',
+    #                             }
+
+    #     response = self.client.get(reverse('main'))
+    #     self.assertTrue('person' in response.context)
+    #     person = response.context['person']
+    #     self.assertTrue(isinstance(person, Person))
+    #     for name, value in personfields_wishdict.iteritems():
+    #         self.assertTrue(hasattr(person, name))
+    #         self.assertTrue(value in str(person.__getattribute__(name)))

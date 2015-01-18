@@ -51,7 +51,7 @@ class RequestDataTestCase(TestCase):
         """
         test __str__ outputs verbose object description
         """
-        self.client.get(reverse('main-page'))
+        self.client.get(reverse('main'))
         requestdata = RequestData.objects.latest('pub_date')
         self.assertTrue("id:1 path:/ method:GET args:<QueryDict: {}> \
 username:AnonymusUser" in requestdata.__str__())

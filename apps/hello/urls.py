@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url
 from apps.hello import views
 
 urlpatterns = patterns('',
-    url(r'^requests/$', views.requests_page, name='requests'),
-    url(r'^main_page/$', views.main_page, name='main-page'),
+    url(r'^requests/$', views.requests, name='requests'),
+    url(r'^main/$', views.main, name='main'),
+    url(r'^edit/$', views.edit, name='edit'),
 )

@@ -16,13 +16,13 @@ class AddDjangoSettingsContextProcessorTestCase(TestCase):
 		"""
 		test django_settings variable available from context
 		"""
-		response = self.client.get(reverse('main-page'))
+		response = self.client.get(reverse('main'))
 		self.assertTrue('django_settings' in response.context)
 
 	def test_correct_django_settings_in_context(self):
 		"""
 		test django settings context variable data matches settings data
 		"""
-		response = self.client.get(reverse('main-page'))
+		response = self.client.get(reverse('main'))
 		self.assertEquals(response.context['django_settings'], settings)
 

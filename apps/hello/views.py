@@ -18,7 +18,7 @@ def main(request):
     A view that presents my name, surname, date of birth, bio, contacts
     on the main page.
     """
-    person = Person.objects.get(user__username='admin')
+    person = get_person_or_admin(request)
     return render(request, "hello/index.html", {'person': person})
 
 def requests(request):
@@ -35,7 +35,7 @@ def edit(request):
     """
     A view that allows to edit content from 'main' view
     """
-    person = Person.objects.get(user__username='admin')
+    person = get_person_or_admin(request)
     if request.method == 'POST':
         form = PersonForm(instance=person, data=request.POST)
         if form.is_valid():

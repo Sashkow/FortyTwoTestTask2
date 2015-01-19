@@ -10,6 +10,11 @@ from django.contrib.auth.models import AnonymousUser
 
 from apps.hello.utils import get_person_or_admin
 
+from django.contrib.auth import authenticate
+from django.contrib import auth
+
+from apps.hello.views import main, edit
+
 class MainPageViewTestCase(TestCase):
     """
     tests for main view
@@ -17,7 +22,7 @@ class MainPageViewTestCase(TestCase):
     fixtures = ['test_data.json']
 
     def setUp(self):
-        pass
+        self.factory = RequestFactory()
 
     def test_main_page_view_returns_200(self):
         """
@@ -50,6 +55,23 @@ class MainPageViewTestCase(TestCase):
             self.assertTrue(hasattr(person, name))
             self.assertTrue(value in str(person.__getattribute__(name)))
 
+    def test_shows_current_user_data(self):
+        """
+        test view renders currently authenticated user's data
+        """
+        request = self.factory.get(reverse('main'))
+        request.user = AnonymousUser()
+        add_session_to_request(request)
+        response = main(request)
+
+        self.assertTrue('Olexandr' in str(response))
+        
+        request.user = authenticate(username='leela', password='leela')
+        auth.login(request, request.user)
+        response = main(request)
+
+        self.assertTrue('Leela' in str(response))
+
 
 class RequestDataViewTestCase(TestCase):
     """
@@ -78,6 +100,10 @@ class EditViewTestCase(TestCase):
     edit view test case
     """
     fixtures = ['test_data.json']
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
     def test_returns_200(self):
         """
         test edit view returns 200 in response 
@@ -121,6 +147,23 @@ class EditViewTestCase(TestCase):
         self.assertEquals(response.status_code, 302)
         self.assertEquals('http://testserver/',response.url) 
 
+    def test_shows_current_user_data(self):
+        """
+        test view renders currently authenticated user's data
+        """
+        request = self.factory.get(reverse('edit'))
+        request.user = AnonymousUser()
+        add_session_to_request(request)
+        response = edit(request)
+
+        self.assertTrue('Olexandr' in str(response))
+        
+        request.user = authenticate(username='leela', password='leela')
+        auth.login(request, request.user)
+        response = edit(request)
+
+        self.assertTrue('Leela' in str(response))
+
 
 from django.contrib.sessions.middleware import SessionMiddleware
 
@@ -132,18 +175,29 @@ def add_session_to_request(request):
 
 class GetPersonOrAdminUtilTestCase(TestCase):
     """
+    test util function that gets Person object for current User if
+    authenticated or logins as admin and then gets Person object for admin 
     """
     fixtures = ['test_data.json']
+    
     def setUp(self):
         self.factory = RequestFactory()
 
     def test_gets_admin_if_unauthed(self):
+        """
+        test function returns Person object for admin
+        if user is not authenticated
+        """
         request = self.factory.get(reverse('main'))
         request.user = AnonymousUser()
         add_session_to_request(request)
         self.assertEquals(get_person_or_admin(request).user.username,'admin')
 
     def test_gets_person_if_authed(self):
+        """
+        test function returns Person obect for user
+        if user is authenticated
+        """
         request = self.factory.get(reverse('main'))
         request.user = User.objects.get(username='leela')
         self.assertEquals(get_person_or_admin(request).user.username,'leela')

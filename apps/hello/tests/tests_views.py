@@ -3,8 +3,12 @@ from django.test import TestCase
 from django.core.urlresolvers import reverse
 # from django.test import Client
 from django.test.client import RequestFactory
+from django.contrib.auth.models import User
 from apps.hello.models import Person
 
+from django.contrib.auth.models import AnonymousUser
+
+from apps.hello.utils import get_person_or_admin
 
 class MainPageViewTestCase(TestCase):
     """
@@ -116,3 +120,30 @@ class EditViewTestCase(TestCase):
         response = self.client.post(reverse('edit'))
         self.assertEquals(response.status_code, 302)
         self.assertEquals('http://testserver/',response.url) 
+
+
+from django.contrib.sessions.middleware import SessionMiddleware
+
+def add_session_to_request(request):
+    """Annotate a request object with a session"""
+    middleware = SessionMiddleware()
+    middleware.process_request(request)
+    request.session.save() 
+
+class GetPersonOrAdminUtilTestCase(TestCase):
+    """
+    """
+    fixtures = ['test_data.json']
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_gets_admin_if_unauthed(self):
+        request = self.factory.get(reverse('main'))
+        request.user = AnonymousUser()
+        add_session_to_request(request)
+        self.assertEquals(get_person_or_admin(request).user.username,'admin')
+
+    def test_gets_person_if_authed(self):
+        request = self.factory.get(reverse('main'))
+        request.user = User.objects.get(username='leela')
+        self.assertEquals(get_person_or_admin(request).user.username,'leela')

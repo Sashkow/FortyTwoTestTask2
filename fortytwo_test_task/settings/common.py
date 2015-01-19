@@ -61,6 +61,7 @@ INSTALLED_APPS = (
 # ]
 
 MIDDLEWARE_CLASSES = (
+    'apps.hello.middleware.RequestStore',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,7 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'apps.hello.middleware.RequestStore'
+    
 )
 
 ROOT_URLCONF = 'fortytwo_test_task.urls'
@@ -161,3 +162,5 @@ TEMPLATE_CONTEXT_PROCESSORS =  (
 
     "apps.hello.context_processors.django_settings",
     )
+
+APPEND_SLASH = True

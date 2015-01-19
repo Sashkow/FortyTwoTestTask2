@@ -3,35 +3,53 @@
     <head>
         {% load staticfiles %}        
         <meta charset="utf-8">
+        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <title>{% block pagetitle%} 42 Coffee Cups Test Assignment {% endblock %}</title>
-         
+        <meta name="keywords" content="" />
+        <meta name="description" content="" /> 
         {% block csslinks %} 
+            <link rel="stylesheet" type="text/css" href="/static/hello/style.css">            
         {% endblock %}
-
-        <link rel="stylesheet" type="text/css" href="/static/hello/style.css">    
-
         <meta http-equiv="X-UA-Compatible" content="chrome=IE7" />
-
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
-        <!-- <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection"/> -->
-
     </head>
 
     <body>
-        <h1>{% block title %}42 Coffee Cups Test Assignment {% endblock %}</h1>
+        <div class="wrapper">
 
-        {% block content %}
-            no content
-        {% endblock %}
-        <hr>
-        <div style="display:inline-block;">
-            <a href="{% url 'requests' %}">requests</a>
-        </div>
-        <div style="display:inline-block;">
-            <a name="edit_page_link" href="{% url 'edit' %}">edit</a>
-        </div>
-    </body>
+        <header class="header">
+            <h1>{% block title %}42 Coffee Cups Test Assignment {% endblock %}</h1>
+        </header><!-- .header-->
+
+        <div class="middle">
+            <div class="container">
+                <main class="content">
+                    {% block content %}
+                        no content
+                    {% endblock %}
+                </main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="right-sidebar">
+                <a name="login_page_link" href="{% url 'login' %}">login</a>
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+        <footer class="footer">
+            <hr>
+            <div style="display:inline-block;">
+                <a href="{% url 'requests' %}">requests</a>
+            </div>
+            <div style="display:inline-block;">
+                <a name="edit_page_link" href="{% url 'edit' %}">edit</a>
+            </div>
+        </footer><!-- .footer -->
+
+    </div><!-- .wrapper -->
+        
+        
+</body>
 </html>

@@ -8,6 +8,7 @@
 
 
 {% block content %}
+
     <div class="left">
         <div>Name: {{person.name}}</div>
         <div>Last name: {{person.surname}}</div>
@@ -22,7 +23,11 @@
         <div>Skype: {{person.skype}}</div>
         <div>Other contacts: <pre>{{person.contacts}}</pre></div>
     </div>
-    <div><a name="edit_page_link" href="{% url 'edit' %}">edit</a></div>
+    <div>
+        <a name="login_page_link" href="{% url 'login' %}">login</a>
+    </div class="right">
+    
+
     
 
 {% endblock %}

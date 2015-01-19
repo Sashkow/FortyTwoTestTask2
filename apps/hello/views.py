@@ -12,6 +12,11 @@ from apps.hello.forms import PersonForm
 
 from apps.hello.utils import get_person_or_admin
 
+from django.contrib.auth.forms import AuthenticationForm
+
+from django.contrib.auth import authenticate
+from django.contrib import auth
+
 
 def main(request):
     """
@@ -45,6 +50,17 @@ def edit(request):
         form = PersonForm(instance=person)
 
     return render(request, "hello/edit.html", {'form': form})
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            auth.login(request, form.get_user())
+        return HttpResponseRedirect(reverse('main'))
+    else:
+        form = AuthenticationForm()
+    return render(request, 'hello/login.html', {'form': form})    
+
     
 
 

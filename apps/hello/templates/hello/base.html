@@ -8,7 +8,8 @@
         {% block csslinks %} 
         {% endblock %}
 
-        <link rel="stylesheet" type="text/css" href="/static/hello/style.css">
+        <link rel="stylesheet" type="text/css" href="/static/hello/style.css">    
+
         <meta http-equiv="X-UA-Compatible" content="chrome=IE7" />
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
@@ -16,6 +17,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
         <!-- <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection"/> -->
+
     </head>
 
     <body>
@@ -25,6 +27,11 @@
             no content
         {% endblock %}
         <hr>
-        <div><a href="{% url 'requests' %}">requests</a></div>
+        <div style="display:inline-block;">
+            <a href="{% url 'requests' %}">requests</a>
+        </div>
+        <div style="display:inline-block;">
+            <a name="edit_page_link" href="{% url 'edit' %}">edit</a>
+        </div>
     </body>
 </html>

@@ -179,7 +179,7 @@ class GetPersonOrAdminUtilTestCase(TestCase):
     authenticated or logins as admin and then gets Person object for admin 
     """
     fixtures = ['test_data.json']
-    
+
     def setUp(self):
         self.factory = RequestFactory()
 
@@ -201,3 +201,31 @@ class GetPersonOrAdminUtilTestCase(TestCase):
         request = self.factory.get(reverse('main'))
         request.user = User.objects.get(username='leela')
         self.assertEquals(get_person_or_admin(request).user.username,'leela')
+
+
+class LoginViewTestCase(TestCase):
+    """
+    login view's test case
+    """
+    def test_returns_200(self):
+        """
+        test view renders page successfully
+        i. e. returns response with status code 200
+        """
+        response = self.client.get(reverse('login'))
+        self.assertEquals(response.status_code, 200)
+
+    def test_has_form_in_context(self):
+        """
+        test view returns form in response.context 
+        """
+        response = self.client.get(reverse('login'))
+        self.assertTrue('form' in response.context)
+
+    def test_redirects_to_main_on_post(self):
+        """
+        test viwew redirects to main page after POST request
+        """
+        response = self.client.post(reverse('login'))
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals('http://testserver/',response.url) 

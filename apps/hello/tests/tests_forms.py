@@ -9,6 +9,11 @@ from django.contrib.auth.models import User
 
 from apps.hello.admin import PersonForm
 
+from django.conf import settings
+from django.conf.urls.static import static
+
+from apps.hello.utils import get_person_or_admin
+
 class PersonFormTestCase(TestCase):
     """
     test PersonForm modelform from admin.py
@@ -50,3 +55,4 @@ class PersonFormTestCase(TestCase):
              "has_changed")
         else:
             self.fail("personform not valid")
+

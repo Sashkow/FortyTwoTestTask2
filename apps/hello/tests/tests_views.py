@@ -1,3 +1,7 @@
+import os
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.test import TestCase
 
 from django.core.urlresolvers import reverse
@@ -99,7 +103,7 @@ class EditViewTestCase(TestCase):
     """
     edit view test case
     """
-    fixtures = ['test_data.json']
+    fixtures = ['test_data_img.json']
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -163,6 +167,13 @@ class EditViewTestCase(TestCase):
         response = edit(request)
 
         self.assertTrue('Leela' in str(response))
+
+    def test_image_url_in_context(self):
+        """
+        test image url can be accessed from context on form post
+        """
+        pass
+
 
 
 from django.contrib.sessions.middleware import SessionMiddleware
@@ -229,3 +240,45 @@ class LoginViewTestCase(TestCase):
         response = self.client.post(reverse('login'))
         self.assertEquals(response.status_code, 302)
         self.assertEquals('http://testserver/',response.url) 
+
+from django.contrib.sessions.middleware import SessionMiddleware
+
+def add_session_to_request(request):
+    """Annotate a request object with a session"""
+    middleware = SessionMiddleware()
+    middleware.process_request(request)
+    request.session.save() 
+
+
+class UploadImageTests(TestCase):
+    fixtures = ['test_data_img.json']
+
+    def setUp(self):
+        self.factory = RequestFactory()
+    
+    def test_image_uploads(self):
+        """
+        image file in request.FILES when post form with attached image
+        """
+        user = User.objects.get(username='admin')
+        person = Person.objects.get(user=user)
+
+        files_count = len(os.listdir(settings.MEDIA_ROOT+'/persons'))
+        response = self.client.post(reverse('edit'), {'ava': person.ava.file})
+        files_count_after = len(os.listdir(settings.MEDIA_ROOT+'/persons'))
+        self.assertEquals(files_count_after - files_count, 2) # added file and thumbnail
+
+    def test_ava_url_in_context(self):
+        """
+        test 'edit' get response.context contains ava.url 
+        """
+        request = self.factory.get(reverse('edit'))
+        request.user = User.objects.get(username='admin')
+        person = Person.objects.get(user=request.user)
+        add_session_to_request(request)
+        response = edit(request)
+        # print dir(response)
+
+
+        # print response.context.form.ava
+        # self.assertTrue(False)

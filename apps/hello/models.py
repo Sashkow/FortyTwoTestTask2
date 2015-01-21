@@ -4,6 +4,8 @@ app hello models
 from django.db import models
 from django.contrib.auth.models import User
 
+from stdimage import StdImageField
+
 
 class Person(models.Model):
     """
@@ -17,6 +19,9 @@ class Person(models.Model):
     contacts = models.TextField(null=True, blank=True)
     jabber = models.CharField(max_length=50, null=True, blank=True)
     skype = models.CharField(max_length=50, null=True, blank=True)
+    ava = StdImageField(null=True, blank=True, upload_to='persons', \
+        variations={'thumbnail': { 'height': 200, 'width': 200, 'crop':True}})
+
 
     @property
     def name(self):

@@ -1,6 +1,9 @@
 {% extends "hello/base.html" %}
 
+{% load staticfiles %}
+
 {% block pagetitle %} Edit Page {% endblock %}
+
 
 {% block csslinks %} 
 <link rel="stylesheet" type="text/css" href="/static/hello/style.css">    
@@ -8,13 +11,21 @@
 
 
 {% block content %}
-    <form action="{% url 'edit' %}" method="post">
+    <form enctype="multipart/form-data" action="{% url 'edit' %}" method="post">
         {% csrf_token %}
         <div class="left-subcolumn">
             <div>Name: {{form.name}}</div>
             <div>Last name: {{form.surname}}</div>
             <div>Date of birth: {{form.birth_date}}</div>
-            <div>Bio: <pre>{{form.bio}}</pre></div>
+            <div>Photo:</div>
+            <div>{{form.ava}}</div>
+
+            {% if person.ava %}
+                <div><img src="{{person.ava.thumbnail.url}}"></div>
+            {% else %}
+                <div><img src="{% static "img/default_ava.png" %}"></div>
+            {% endif %}
+
         </div>
         <div class="right-subcolumn">
             <div>Contacts</div>
@@ -22,7 +33,13 @@
             <div>Email: {{form.email}}</div>
             <div>Jabber: {{form.jabber}}</div>
             <div>Skype: {{form.skype}}</div>
-            <div>Other contacts: <pre>{{form.contacts}}</pre></div>
+            <div>Other contacts:</div>
+            <br>
+            <div>{{form.contacts}}</div>
+            <br>
+            <div>Bio:</div>
+            <br>
+            <div>{{form.bio}}</div>
         </div>
 
         <input name="save_and_back_submit" type="submit" value="Save" style="display:inline-block;" />

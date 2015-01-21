@@ -53,7 +53,7 @@ class RequestDataTestCase(TestCase):
         """
         self.client.get(reverse('main'))
         requestdata = RequestData.objects.latest('pub_date')
-        self.assertTrue("id:1 path:/ method:GET args:<QueryDict: {}> \
+        self.assertTrue("path:/ method:GET args:<QueryDict: {}> \
 username:AnonymusUser" in requestdata.__str__())
 
 

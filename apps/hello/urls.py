@@ -7,3 +7,4 @@ urlpatterns = patterns('',
     url(r'^edit/$', views.edit, name='edit'),
     url(r'^login/$', views.login, name='login'),
 )
+

@@ -17,7 +17,7 @@
             {% if person.ava %}
                 <div><img src="{{person.ava.thumbnail.url}}"></div>
             {% else %}
-                <div><img src="{% static "img/default_ava.png" %}"></div>
+                <div><img src="{% static "hello/img/default_ava.png" %}"></div>
             {% endif %}
 
         </div>
@@ -30,6 +30,7 @@
             <div>Other contacts: </div>
             <br>
             {{person.contacts}}
+            <br>
             <div>Bio:</div>
             <br>
             {{person.bio}}

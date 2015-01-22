@@ -28,7 +28,7 @@ def main(request):
     #     ava_url = person.ava.url
     # else:
     #     ava_url = ""
-
+    # print person.ava.thumbnail.url
     return render(request, "hello/index.html", \
      {'person': person})
 
@@ -56,7 +56,6 @@ def edit(request):
             form.save()
         return HttpResponseRedirect(reverse('main'))
     else:
-        # person.save()
         form = PersonForm(instance=person)
     
     

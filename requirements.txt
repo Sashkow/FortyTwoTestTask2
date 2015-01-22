@@ -15,8 +15,4 @@ pytest-cov==1.8.1
 selenium==2.44.0
 wsgiref==0.1.2
 django-ajax-upload-widget==0.5.5
-django-fixture-media==0.1.4
-matplotlib==1.4.2
 mock==1.0.1
-numpy==1.9.1
-

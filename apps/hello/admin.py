@@ -11,9 +11,9 @@ class PersonAdmin(admin.ModelAdmin):
     """
 
     list_display = ('user', 'name', 'surname', 'birth_date', \
-     'bio', 'email', 'jabber', 'skype', 'contacts')
+     'bio', 'email', 'jabber', 'skype', 'contacts', 'ava')
     fields = ['name', 'surname', 'birth_date', \
-     'bio', 'email', 'jabber', 'skype', 'contacts']
+     'bio', 'email', 'jabber', 'skype', 'contacts', 'ava']
 
     form = PersonForm
 

@@ -4,12 +4,16 @@ app hello models
 from django.db import models
 from django.contrib.auth.models import User
 
+from stdimage import StdImageField
+
 
 class Person(models.Model):
     """
     Model to store my name, surname, date of birth, bio,
     contacts in access to :model:`auth.User` fields provided via properties
     """
+    thumbnail_size = 200
+
     user = models.OneToOneField(User)
 
     birth_date = models.DateField(null=True, blank=True)
@@ -17,6 +21,10 @@ class Person(models.Model):
     contacts = models.TextField(null=True, blank=True)
     jabber = models.CharField(max_length=50, null=True, blank=True)
     skype = models.CharField(max_length=50, null=True, blank=True)
+    ava = StdImageField(null=True, blank=True, upload_to='persons', \
+        variations={'thumbnail': {'height': thumbnail_size,
+                                   'width': thumbnail_size,
+                                    'crop': True}})
 
     @property
     def name(self):

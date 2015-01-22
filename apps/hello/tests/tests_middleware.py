@@ -19,8 +19,8 @@ class RequestStoreMiddlewareTestCase(TestCase):
 
     def test_middleware_updates_database(self):
         """
-        test whether :model:`RequestData` amount is increased when request is made
-        (functional test)
+        test whether :model:`RequestData` amount is increased when request 
+        is made (functional test)
         """
         requestdata_count = len(RequestData.objects.all())
 

@@ -7,6 +7,8 @@ from django.test.client import RequestFactory
 from apps.hello.models import Person, RequestData
 from django.contrib.auth.models import User
 
+import os
+from django.conf import settings
 
 class PersonModelTestCase(TestCase):
     """
@@ -47,13 +49,13 @@ class PersonModelTestCase(TestCase):
 
 class RequestDataTestCase(TestCase):
     fixtures = ['test_data.json']
-    def test(self):
+    def test__str__(self):
         """
         test __str__ outputs verbose object description
         """
-        self.client.get(reverse('main-page'))
+        self.client.get(reverse('main'))
         requestdata = RequestData.objects.latest('pub_date')
-        self.assertTrue("id:1 path:/ method:GET args:<QueryDict: {}> \
+        self.assertTrue("path:/ method:GET args:<QueryDict: {}> \
 username:AnonymusUser" in requestdata.__str__())
 
 

@@ -92,7 +92,7 @@ class RequestDataViewTestCase(TestCase):
         response = self.client.get(reverse('requests'))
         self.assertEquals(response.status_code, 200)
 
-    def test_list_of_10_requests_in_context(self):
+    def test_requests_list_in_context(self):
         """
         test view response context contains list of 10 request info objects 
         """
@@ -155,7 +155,7 @@ class EditViewTestCase(TestCase):
         """
         response = self.client.post(reverse('edit'))
         self.assertEquals(response.status_code, 302)
-        self.assertEquals('http://testserver/',response.url) 
+        self.assertEquals('http://testserver/', response.url) 
 
     def test_shows_current_user_data(self):
         """
@@ -173,14 +173,6 @@ class EditViewTestCase(TestCase):
         response = edit(request)
 
         self.assertTrue('Leela' in str(response))
-
-    def test_image_url_in_context(self):
-        """
-        test image url can be accessed from context on form post
-        """
-        pass
-
-
 
 class LoginViewTestCase(TestCase):
     """
@@ -207,5 +199,5 @@ class LoginViewTestCase(TestCase):
         """
         response = self.client.post(reverse('login'))
         self.assertEquals(response.status_code, 302)
-        self.assertEquals('http://testserver/',response.url) 
+        self.assertEquals('http://testserver/', response.url) 
 

@@ -42,8 +42,7 @@ class PersonFormTestCase(TestCase):
         self.assertTrue(all(item in personform.initial.items() \
                         for item in personfields_wishdict.items()))
 
-
-    def test_form_saves_values_to_instance_user_on_save(self):
+    def test_saves_user_on_save(self):
         """
         test that, form saves name, surname, email values to corresponding User
         when commiting form
@@ -62,20 +61,19 @@ class PersonFormTestCase(TestCase):
         """
         test image uploads on form save
         """
-        user = User.objects.get(username='admin')
-        person = Person.objects.get(user=user)
 
-        files_count = len(os.listdir(settings.MEDIA_ROOT+'/persons'))
+        files_count = len(os.listdir(settings.MEDIA_ROOT + '/persons'))
         with open('media/test_images/test.jpg') as f:
-            response = self.client.post(reverse('edit'), {'ava': f})
-        files_count_after = len(os.listdir(settings.MEDIA_ROOT+'/persons'))
-        self.assertEquals(files_count_after - files_count, 2) # added file and thumbnail
+            self.client.post(reverse('edit'), {'ava': f})
+        files_count_after = len(os.listdir(settings.MEDIA_ROOT + '/persons'))
+        # added file and thumbnail
+        self.assertEquals(files_count_after - files_count, 2) 
         
         # test image scales  
         from PIL import Image
-        im=Image.open(settings.MEDIA_ROOT+'/persons/test.thumbnail.jpg')
+        im = Image.open(settings.MEDIA_ROOT + '/persons/test.thumbnail.jpg')
         thumbnail_size = Person.thumbnail_size
-        self.assertEquals((thumbnail_size,thumbnail_size),im.size)
+        self.assertEquals((thumbnail_size,thumbnail_size), im.size)
 
 
              

@@ -13,7 +13,7 @@ class Person(models.Model):
     contacts in access to :model:`auth.User` fields provided via properties
     """
     thumbnail_size = 200
-    
+
     user = models.OneToOneField(User)
 
     birth_date = models.DateField(null=True, blank=True)
@@ -22,8 +22,9 @@ class Person(models.Model):
     jabber = models.CharField(max_length=50, null=True, blank=True)
     skype = models.CharField(max_length=50, null=True, blank=True)
     ava = StdImageField(null=True, blank=True, upload_to='persons', \
-        variations={'thumbnail': { 'height': thumbnail_size, 'width': thumbnail_size, 'crop':True}})
-
+        variations={'thumbnail': {'height': thumbnail_size,
+                                   'width': thumbnail_size,
+                                    'crop': True}})
 
     @property
     def name(self):

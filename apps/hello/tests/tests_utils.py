@@ -57,7 +57,7 @@ class FixtureTestCase(TestCase):
         """
         test fixture files exist in media folder
         """
-        fixture_persons_dir = os.listdir(settings.MEDIA_ROOT+'/fixture_persons')
+        fixture_persons_dir = os.listdir(settings.MEDIA_ROOT + '/fixture_persons')
         self.assertTrue('2014-10-12-214256.jpg' in fixture_persons_dir)
         self.assertTrue('2014-10-12-214256.thumbnail.jpg' in fixture_persons_dir)
 

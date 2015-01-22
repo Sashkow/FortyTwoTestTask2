@@ -48,7 +48,7 @@ def edit(request):
     """
 
     person = get_person_or_admin(request)
-    
+
     if request.method == 'POST':
 
         form = PersonForm(request.POST, request.FILES, instance=person)
@@ -57,7 +57,6 @@ def edit(request):
         return HttpResponseRedirect(reverse('main'))
     else:
         form = PersonForm(instance=person)
-    
     
     return render(request, "hello/edit.html", 
      {'form': form, 'person': person})

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from apps.hello.models import Person
-from apps.hello.forms import PersonForm
+from apps.hello.forms import AdminPersonForm
 
 
 class PersonAdmin(admin.ModelAdmin):
@@ -12,10 +12,10 @@ class PersonAdmin(admin.ModelAdmin):
 
     list_display = ('user', 'name', 'surname', 'birth_date', \
      'bio', 'email', 'jabber', 'skype', 'contacts', 'ava')
-    fields = ['name', 'surname', 'birth_date', \
+    fields = ['user','name', 'surname', 'birth_date', \
      'bio', 'email', 'jabber', 'skype', 'contacts', 'ava']
 
-    form = PersonForm
+    form = AdminPersonForm
 
 
 admin.site.register(Person, PersonAdmin)

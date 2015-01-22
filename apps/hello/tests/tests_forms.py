@@ -7,7 +7,7 @@ from django.test.client import RequestFactory
 from apps.hello.models import Person
 from django.contrib.auth.models import User
 
-from apps.hello.admin import PersonForm
+from apps.hello.forms import PersonForm
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -20,7 +20,6 @@ class PersonFormTestCase(TestCase):
     """
     test PersonForm modelform from admin.py
     """
-    fixtures = ['test_data.json']
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -48,8 +47,8 @@ class PersonFormTestCase(TestCase):
         when commiting form
         """
         person = Person.objects.get(user__username='admin')
-        personform = PersonForm(instance=person, data={'name': 'has_changed'})
-
+        personform = PersonForm(instance=person, data={'user': person.user.pk, 'name': 'has_changed'})
+        
         if personform.is_valid():
             person = personform.save()
             self.assertEquals(User.objects.get(pk=person.user.pk).first_name, \
@@ -61,7 +60,7 @@ class PersonFormTestCase(TestCase):
         """
         test image uploads on form save
         """
-
+        
         files_count = len(os.listdir(settings.MEDIA_ROOT + '/persons'))
         with open('media/test_images/test.jpg') as f:
             self.client.post(reverse('edit'), {'ava': f})
@@ -75,6 +74,7 @@ class PersonFormTestCase(TestCase):
         thumbnail_size = Person.thumbnail_size
         self.assertEquals((thumbnail_size,thumbnail_size), im.size)
 
+        
 
              
         

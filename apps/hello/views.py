@@ -50,10 +50,15 @@ def edit(request):
     person = get_person_or_admin(request)
 
     if request.method == 'POST':
-
+        # post = request.POST.copy()
+        # post['user'] = person.user.pk
         form = PersonForm(request.POST, request.FILES, instance=person)
         if form.is_valid():
             form.save()
+        else:
+            return render(request, "hello/edit.html", 
+            {'form': form, 'person': person})
+
         return HttpResponseRedirect(reverse('main'))
     else:
         form = PersonForm(instance=person)

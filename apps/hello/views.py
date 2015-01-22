@@ -46,7 +46,9 @@ def edit(request):
     """
     A view that allows to edit content from 'main' view
     """
+
     person = get_person_or_admin(request)
+    
     if request.method == 'POST':
 
         form = PersonForm(request.POST, request.FILES, instance=person)
@@ -54,9 +56,10 @@ def edit(request):
             form.save()
         return HttpResponseRedirect(reverse('main'))
     else:
-        person.save()
+        # person.save()
         form = PersonForm(instance=person)
-
+    
+    
     return render(request, "hello/edit.html", 
      {'form': form, 'person': person})
 

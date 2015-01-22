@@ -46,7 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admindocs',
     'stdimage',
-    'fixturemedia',
+    # 'fixturemedia',
+    # 'fixture_media',
     # 'django_nose',
     'south',
 

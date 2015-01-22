@@ -1,6 +1,68 @@
 [
 {
     "pk": 1, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "admin", 
+        "first_name": "Olexandr", 
+        "last_name": "Lykhenko", 
+        "is_active": true, 
+        "is_superuser": true, 
+        "is_staff": true, 
+        "last_login": "2015-01-21T12:01:33.286Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$JhrJSKGKu3qT$RNKMogy6OLCtk5BtVl5ti3jrUvn92rz7F660TMnzDWk=", 
+        "email": "lykhenko.olexandr@gmail.com", 
+        "date_joined": "2015-01-13T13:14:50Z"
+    }
+},
+{
+    "pk": 2, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "leela", 
+        "first_name": "Leela", 
+        "last_name": "Turanga", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2015-01-13T13:19:39Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$wyPCegAIAspV$aL7yVcbFwbrjtuWWOKrMpgMbGRLfrJRoCbVPwkKYQsA=", 
+        "email": "leela@earth.com", 
+        "date_joined": "2015-01-13T13:19:39Z"
+    }
+},
+{
+    "pk": 1, 
+    "model": "hello.person", 
+    "fields": {
+        "bio": "Turanga Leela was born to Morris and Munda, two mutants who live in the sewer deep under New New York City. When Leela was still an infant, her parents gave her up to the Cookieville Minimum Security Orphanarium with a note scribbled with mysterious symbols to make an impression that Leela was an alien, so that she would have a better life than a typical mutant. For the first three seasons of the series Leela does not give up hope of meeting another member of her race of one-eyed aliens. In the episode \"A Bicyclops Built for Two\", Leela meets Alcazar, a cyclops who convinces her that he and she are the last two members of their extinct race, only to discover that he is a shapeshifting impostor.[1] Leela's parents' plan of concealing her origins works well until an industrial accident caused by environmentally irresponsible Bender brings Leela and her friends into the New New York City's sewer system where for the first time Leela meets her parents and discovers that she is not a cyclopean alien,[2] but is actually a sewer mutant.[3]", 
+        "contacts": "none", 
+        "user": 2, 
+        "skype": null, 
+        "birth_date": "2974-12-03", 
+        "jabber": null, 
+        "ava": ""
+    }
+},
+{
+    "pk": 2, 
+    "model": "hello.person", 
+    "fields": {
+        "bio": "Born in Dnipropetrovsk, Ukraine.", 
+        "contacts": "https://www.linkedin.com/pub/sashko-lykhenko/51/916/122", 
+        "user": 1, 
+        "skype": "sashkointelcore2duo", 
+        "birth_date": "1991-02-01", 
+        "jabber": "sashko@42cc.co", 
+        "ava": "/media/fixture_persons/2014-10-12-214256.jpg"
+    }
+},
+{
+    "pk": 1, 
     "model": "contenttypes.contenttype", 
     "fields": {
         "model": "logentry", 
@@ -90,30 +152,6 @@
     }
 },
 {
-    "pk": "dahq0bckquof7wpuovmhhdr6vakkc63y", 
-    "model": "sessions.session", 
-    "fields": {
-        "expire_date": "2015-01-27T13:15:05.712Z", 
-        "session_data": "ZTJjMGJjYjAzNzk2NGJjZjJkZTdhYzZmZWIzYzgzMDIyZjg5MThjYTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
-    }
-},
-{
-    "pk": "kqzlp3wi49jnmjxx1brrgo4k4ztljj86", 
-    "model": "sessions.session", 
-    "fields": {
-        "expire_date": "2015-02-04T12:01:33.612Z", 
-        "session_data": "ZTJjMGJjYjAzNzk2NGJjZjJkZTdhYzZmZWIzYzgzMDIyZjg5MThjYTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
-    }
-},
-{
-    "pk": "kxbmqc4r4rc8kkavluo71ze3h294cttv", 
-    "model": "sessions.session", 
-    "fields": {
-        "expire_date": "2015-02-03T15:13:02.365Z", 
-        "session_data": "ZTJjMGJjYjAzNzk2NGJjZjJkZTdhYzZmZWIzYzgzMDIyZjg5MThjYTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
-    }
-},
-{
     "pk": 1, 
     "model": "sites.site", 
     "fields": {
@@ -125,7 +163,7 @@
     "pk": 1, 
     "model": "south.migrationhistory", 
     "fields": {
-        "applied": "2015-01-13T12:30:25.243Z", 
+        "applied": "2015-01-22T08:29:15.494Z", 
         "app_name": "hello", 
         "migration": "0001_initial"
     }
@@ -134,317 +172,45 @@
     "pk": 2, 
     "model": "south.migrationhistory", 
     "fields": {
-        "applied": "2015-01-13T15:01:26.638Z", 
+        "applied": "2015-01-22T08:29:16.506Z", 
         "app_name": "hello", 
         "migration": "0002_auto__add_field_person_jabber__add_field_person_skype"
     }
 },
 {
-    "pk": 1, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:00.842Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 2, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:05.906Z", 
-        "method": "GET"
-    }
-},
-{
     "pk": 3, 
-    "model": "hello.requestdata", 
+    "model": "south.migrationhistory", 
     "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:09.409Z", 
-        "method": "GET"
+        "applied": "2015-01-22T08:29:16.784Z", 
+        "app_name": "hello", 
+        "migration": "0003_auto__add_requestdata"
     }
 },
 {
     "pk": 4, 
-    "model": "hello.requestdata", 
+    "model": "south.migrationhistory", 
     "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:12.273Z", 
-        "method": "GET"
+        "applied": "2015-01-22T08:29:17.385Z", 
+        "app_name": "hello", 
+        "migration": "0004_auto__add_field_requestdata_pub_date"
     }
 },
 {
     "pk": 5, 
-    "model": "hello.requestdata", 
+    "model": "south.migrationhistory", 
     "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:15.003Z", 
-        "method": "GET"
+        "applied": "2015-01-22T08:29:19.758Z", 
+        "app_name": "hello", 
+        "migration": "0005_auto__del_field_requestdata_pickled_request__add_field_requestdata_pat"
     }
 },
 {
     "pk": 6, 
-    "model": "hello.requestdata", 
+    "model": "south.migrationhistory", 
     "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/hello/person/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:23.339Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 7, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/jsi18n/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:23.659Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 8, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/hello/person/2/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:25.336Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 9, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/jsi18n/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:25.626Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 10, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/hello/person/2/", 
-        "args": "<QueryDict: {u'bio': [u'Born in Dnipropetrovsk, Ukraine.'], u'surname': [u'Lykhenko'], u'name': [u'Olexandr'], u'contacts': [u'https://www.linkedin.com/pub/sashko-lykhenko/51/916/122'], u'skype': [u'sashkointelcore2duo'], u'birth_date': [u'1991-02-01'], u'csrfmiddlewaretoken': [u'N2XRmdFwGlmDPwbkurNcxjOXx2SrUXwW'], u'jabber': [u'sashko@42cc.co'], u'email': [u'lykhenko.olexandr@gmail.com'], u'_save': [u'Save']}>", 
-        "pub_date": "2015-01-20T15:13:53.504Z", 
-        "method": "POST"
-    }
-},
-{
-    "pk": 11, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/hello/person/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:53.995Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 12, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/jsi18n/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:13:54.212Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 13, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/hello/person/2/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:14:13.663Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 14, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/admin/jsi18n/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-20T15:14:13.915Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 15, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/hello/edit/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:01:32.488Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 16, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/media/persons/towel_photo.jpg persons/towel_photo.thumbnalil.thumbnail.jpg", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:01:33.816Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 17, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/hello/edit/", 
-        "args": "<QueryDict: {u'save_and_back_submit': [u'Save'], u'bio': [u'Born in Dnipropetrovsk, Ukraine.'], u'surname': [u'Lykhenko'], u'name': [u'Olexandr'], u'contacts': [u'https://www.linkedin.com/pub/sashko-lykhenko/51/916/122'], u'skype': [u'sashkointelcore2duo'], u'birth_date': [u'1991-02-01'], u'csrfmiddlewaretoken': [u'yuqZXeVBZK4NrXhmntH0LSumLfP6NT0n'], u'jabber': [u'sashko@42cc.co'], u'email': [u'lykhenko.olexandr@gmail.com']}>", 
-        "pub_date": "2015-01-21T12:02:21.310Z", 
-        "method": "POST"
-    }
-},
-{
-    "pk": 18, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:02:21.864Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 19, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/media/persons/1271012155_omg-8.thumbnail.jpg", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:02:22.076Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 20, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/hello/edit/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:02:23.859Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 21, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/media/persons/1271012155_omg-8.thumbnail.jpg", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:02:24.201Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 22, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:29:15.583Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 23, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/media/persons/1271012155_omg-8.thumbnail.jpg", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:29:15.889Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 24, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/hello/edit/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:29:21.892Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 25, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/media/persons/1271012155_omg-8.thumbnail.jpg", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:29:22.438Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 26, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/hello/edit/", 
-        "args": "<QueryDict: {u'save_and_back_submit': [u'Save'], u'bio': [u'Born in Dnipropetrovsk, Ukraine.'], u'surname': [u'Lykhenko'], u'name': [u'Olexandr'], u'contacts': [u'https://www.linkedin.com/pub/sashko-lykhenko/51/916/122'], u'skype': [u'sashkointelcore2duo'], u'birth_date': [u'1991-02-01'], u'csrfmiddlewaretoken': [u'yuqZXeVBZK4NrXhmntH0LSumLfP6NT0n'], u'jabber': [u'sashko@42cc.co'], u'email': [u'lykhenko.olexandr@gmail.com']}>", 
-        "pub_date": "2015-01-21T12:30:01.463Z", 
-        "method": "POST"
-    }
-},
-{
-    "pk": 27, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:30:01.939Z", 
-        "method": "GET"
-    }
-},
-{
-    "pk": 28, 
-    "model": "hello.requestdata", 
-    "fields": {
-        "username": "AnonymusUser", 
-        "path": "/media/persons/2014-10-12-214256.thumbnail.jpg", 
-        "args": "<QueryDict: {}>", 
-        "pub_date": "2015-01-21T12:30:02.210Z", 
-        "method": "GET"
+        "applied": "2015-01-22T08:29:20.378Z", 
+        "app_name": "hello", 
+        "migration": "0006_auto__add_field_person_ava"
     }
 },
 {
@@ -715,367 +481,6 @@
         "codename": "delete_requestdata", 
         "name": "Can delete request data", 
         "content_type": 10
-    }
-},
-{
-    "pk": 1, 
-    "model": "auth.user", 
-    "fields": {
-        "username": "admin", 
-        "first_name": "Olexandr", 
-        "last_name": "Lykhenko", 
-        "is_active": true, 
-        "is_superuser": true, 
-        "is_staff": true, 
-        "last_login": "2015-01-21T12:01:33.286Z", 
-        "groups": [], 
-        "user_permissions": [], 
-        "password": "pbkdf2_sha256$12000$JhrJSKGKu3qT$RNKMogy6OLCtk5BtVl5ti3jrUvn92rz7F660TMnzDWk=", 
-        "email": "lykhenko.olexandr@gmail.com", 
-        "date_joined": "2015-01-13T13:14:50Z"
-    }
-},
-{
-    "pk": 2, 
-    "model": "auth.user", 
-    "fields": {
-        "username": "leela", 
-        "first_name": "Leela", 
-        "last_name": "Turanga", 
-        "is_active": true, 
-        "is_superuser": false, 
-        "is_staff": false, 
-        "last_login": "2015-01-13T13:19:39Z", 
-        "groups": [], 
-        "user_permissions": [], 
-        "password": "pbkdf2_sha256$12000$wyPCegAIAspV$aL7yVcbFwbrjtuWWOKrMpgMbGRLfrJRoCbVPwkKYQsA=", 
-        "email": "leela@earth.com", 
-        "date_joined": "2015-01-13T13:19:39Z"
-    }
-},
-{
-    "pk": 1, 
-    "model": "hello.person", 
-    "fields": {
-        "bio": "Turanga Leela was born to Morris and Munda, two mutants who live in the sewer deep under New New York City. When Leela was still an infant, her parents gave her up to the Cookieville Minimum Security Orphanarium with a note scribbled with mysterious symbols to make an impression that Leela was an alien, so that she would have a better life than a typical mutant. For the first three seasons of the series Leela does not give up hope of meeting another member of her race of one-eyed aliens. In the episode \"A Bicyclops Built for Two\", Leela meets Alcazar, a cyclops who convinces her that he and she are the last two members of their extinct race, only to discover that he is a shapeshifting impostor.[1] Leela's parents' plan of concealing her origins works well until an industrial accident caused by environmentally irresponsible Bender brings Leela and her friends into the New New York City's sewer system where for the first time Leela meets her parents and discovers that she is not a cyclopean alien,[2] but is actually a sewer mutant.[3]", 
-        "contacts": "none", 
-        "user": 2, 
-        "skype": null, 
-        "birth_date": "2974-12-03", 
-        "jabber": null, 
-        "ava": ""
-    }
-},
-{
-    "pk": 2, 
-    "model": "hello.person", 
-    "fields": {
-        "bio": "Born in Dnipropetrovsk, Ukraine.", 
-        "contacts": "https://www.linkedin.com/pub/sashko-lykhenko/51/916/122", 
-        "user": 1, 
-        "skype": "sashkointelcore2duo", 
-        "birth_date": "1991-02-01", 
-        "jabber": "sashko@42cc.co", 
-        "ava": "persons/2014-10-12-214256.jpg"
-    }
-},
-{
-    "pk": 1, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 1, 
-        "action_time": "2015-01-13T13:19:39.605Z", 
-        "object_repr": "leela", 
-        "object_id": "2", 
-        "change_message": "", 
-        "user": 1, 
-        "content_type": 4
-    }
-},
-{
-    "pk": 2, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T13:21:43.775Z", 
-        "object_repr": "leela", 
-        "object_id": "2", 
-        "change_message": "Changed first_name, last_name and email.", 
-        "user": 1, 
-        "content_type": 4
-    }
-},
-{
-    "pk": 3, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 1, 
-        "action_time": "2015-01-13T13:28:56.945Z", 
-        "object_repr": "Leela Turanga", 
-        "object_id": "1", 
-        "change_message": "", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 4, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T13:46:48.741Z", 
-        "object_repr": "sashko", 
-        "object_id": "1", 
-        "change_message": "Changed first_name, last_name and email.", 
-        "user": 1, 
-        "content_type": 4
-    }
-},
-{
-    "pk": 5, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T13:47:00.021Z", 
-        "object_repr": "sashko", 
-        "object_id": "1", 
-        "change_message": "No fields changed.", 
-        "user": 1, 
-        "content_type": 4
-    }
-},
-{
-    "pk": 6, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 1, 
-        "action_time": "2015-01-13T13:50:09.424Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 7, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T13:53:49.756Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed contacts.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 8, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T13:54:10.972Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "No fields changed.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 9, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T14:38:28.569Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed bio.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 10, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T15:02:29.671Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "No fields changed.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 11, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T21:50:33.285Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "No fields changed.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 12, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T21:50:55.607Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed bio.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 13, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T21:53:06.174Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed bio.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 14, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T21:53:50.454Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed bio.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 15, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T21:59:50.341Z", 
-        "object_repr": "1 1", 
-        "object_id": "2", 
-        "change_message": "Changed name, surname and email.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 16, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T22:01:01.414Z", 
-        "object_repr": "ed asds", 
-        "object_id": "2", 
-        "change_message": "Changed name, surname and email.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 17, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T22:34:50.802Z", 
-        "object_repr": "sdfsd asds", 
-        "object_id": "2", 
-        "change_message": "Changed name.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 18, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T22:45:56.598Z", 
-        "object_repr": "O asds", 
-        "object_id": "2", 
-        "change_message": "Changed name.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 19, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T22:49:05.559Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed name, surname, jabber and skype.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 20, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-13T22:49:30.854Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed bio.", 
-        "user": 1, 
-        "content_type": 9
-    }
-},
-{
-    "pk": 21, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-14T09:46:13.084Z", 
-        "object_repr": "admin", 
-        "object_id": "1", 
-        "change_message": "Changed username.", 
-        "user": 1, 
-        "content_type": 4
-    }
-},
-{
-    "pk": 22, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-14T09:46:30.423Z", 
-        "object_repr": "admin", 
-        "object_id": "1", 
-        "change_message": "Changed password.", 
-        "user": 1, 
-        "content_type": 4
-    }
-},
-{
-    "pk": 23, 
-    "model": "admin.logentry", 
-    "fields": {
-        "action_flag": 2, 
-        "action_time": "2015-01-20T15:13:53.837Z", 
-        "object_repr": "Olexandr Lykhenko", 
-        "object_id": "2", 
-        "change_message": "Changed ava.", 
-        "user": 1, 
-        "content_type": 9
     }
 }
 ]

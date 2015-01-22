@@ -109,7 +109,6 @@ class EditViewTestCase(TestCase):
     """
     edit view test case
     """
-    fixtures = ['initial_data.json']
 
     def setUp(self):
         self.factory = RequestFactory()

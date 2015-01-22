@@ -51,6 +51,17 @@ class Person(models.Model):
 
         return " ".join([self.name, self.surname])
 
+    def save(self, *args, **kwargs):
+        """
+        override: delete old file when replacing by updating the file
+        """
+        try:
+            this = Person.objects.get(id=self.id)
+            if this.ava != self.ava:
+                this.ava.delete(save=False)
+        except: pass 
+        super(Person, self).save(*args, **kwargs)
+
 
 class RequestData(models.Model):
     class Meta:

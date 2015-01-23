@@ -55,6 +55,9 @@ class Person(models.Model):
         """
         override: delete old file when replacing by updating the file
         """
+        
+        self.user.save() # important:model affects user
+
         try:
             this = Person.objects.get(id=self.id)
             if this.ava != self.ava:

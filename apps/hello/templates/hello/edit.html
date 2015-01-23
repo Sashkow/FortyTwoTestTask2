@@ -6,12 +6,12 @@
 
 
 {% block csslinks %} 
-<link rel="stylesheet" type="text/css" href="/static/hello/style.css">    
+       <script src="{% static 'hello/js/main.js' %}"></script>
 {% endblock %}
 
 
 {% block content %}
-    <form enctype="multipart/form-data" action="{% url 'edit' %}" method="post">
+    <form id="post-form" enctype="multipart/form-data" action="">
         {% csrf_token %}
         <div class="left-subcolumn">
             <div>Name: {{form.name}}</div>
@@ -42,7 +42,7 @@
             <div>{{form.bio}}</div>
         </div>
 
-        <input name="save_and_back_submit" type="submit" value="Save" style="display:inline-block;" />
+        <input id="id_button" name="save_and_back_submit" type="submit" value="Save" style="display:inline-block;" />
         <div style="display:inline-block;"><a href="{% url 'main' %}">cancel</a></div>
     </form>
 {% endblock %}

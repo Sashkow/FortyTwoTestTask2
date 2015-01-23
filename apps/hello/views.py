@@ -17,6 +17,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib import auth
 
+import json
+
 def main(request):
     """
     A view that presents my name, surname, date of birth, bio, contacts
@@ -65,6 +67,26 @@ def edit(request):
     
     return render(request, "hello/edit.html", 
      {'form': form, 'person': person})
+
+def edit_ajax(request):
+    """
+    a view that allows to save content of the main page without
+    refreshing the page
+    """
+    usr_name = request.POST['name']
+    person = Person.objects.get(user=request.user)
+    person.name = usr_name
+    person.save()
+
+
+    response_data = {}
+    response_data['result'] = 'success'
+    response_data['name'] = person.name
+
+    return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
 
 def login(request):
     if request.method == 'POST':

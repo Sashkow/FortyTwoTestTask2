@@ -1,45 +1,60 @@
-$(document).ready(function(){
-
+$(document).ready(function() { 
 	function create_post() {
-
-        console.log("create post is working!") // sanity check
-	    $.ajax({
-	        url : "edit_ajax/", // the endpoint
-	        type : "POST", // http method
-	        data : { name : $('#id_name').val() }, // data sent with the post request
-
-	        // handle a successful response
+		var options = { 
+	        type:      'post',     
+	        enctype:   'multipart/form-data',
+	        dataType:  'json',
+	        beforeSubmit: function(formData, jqForm, options) {
+			 	$('#id_button').val('Saving...');
+				$("input, textarea").prop( "disabled", true );
+	        },
+	        
 	        success : function(json) {
-			    // $('#post-text').val(''); // remove the value from the input
-			    // console.log(json); // log the returned json to the console
-			    // $("#talk").prepend("<li><strong>"+json.text+"</strong> - <em> "+json.author+"</em> - <span> "+json.created+"</span></li>");
-			    console.log(json);
-			    console.log("success"); // another sanity check
-			    $('#id_button').val('Saved:)');
+	        		if (json.success== true){
+	        			$("#id_img").attr('src', json.img_url)
+				    	$('#id_button').val('Saved:)');	
+				    	$("#results").html("");
+	        		}
+	        		else{
+	        			console.log(json.errors)
+	        			var resultsHtml = ""
+	        			for(var key in json.errors){
+						    if (json.errors.hasOwnProperty(key)){
+						        var value=json.errors[key];
+								resultsHtml+="<div>" + String(key) + " : " + String(value) + "</div>";
+						    }
+}
+	        			$("#results").html(resultsHtml);
+	        			$('#id_button').val('Failed:(');
+	        		}
+
+	        		
+				    $('input, textarea').prop( "disabled", false );
+				},
+
+	        error : function(data) {
+	        	// console.log(data)
+	        	// for (var i = 0; i < data.length; i++) {
+	        	// 	console.log(data[i])
+	        	// };
+
+	      //   	var errors = jQuery.parseJSON(data)
+    			// console.log("errors")
+    			// console.log(errors)
+	            $('#results').html(data);
+	            
+            	$('#id_button').val('Failed:(');
 			    $('input, textarea').prop( "disabled", false );
-			},
+	        } 
+    	};     
+	    $('#post-form').ajaxSubmit(options); 
+	};	
 
-	        // handle a non-successful response
-	        error : function(xhr,errmsg,err) {
-	            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-	                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-	            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-	        }
-	    });
-	};
-
-	$('#post-form').on('submit', function(event){
-		$('#id_button').val('Saving...');
-		$("input, textarea").prop( "disabled", true );
-	    event.preventDefault();
-	    console.log("form submitted!")  // sanity check
+	$('#post-form').on('submit', function(event){	
 	    create_post();
+	    return false;
 	});
-
-});
-
-
-
+}); 
 
 
 

@@ -14,7 +14,7 @@ class PersonModelTestCase(TestCase):
     """
     test Person model
     """
-    fixtures = ['test_data.json']
+    # fixtures = ['test_data.json']
 
     def test_person__str__(self):
         """
@@ -56,7 +56,7 @@ class PersonModelTestCase(TestCase):
 
 
 class RequestDataTestCase(TestCase):
-    fixtures = ['test_data.json']
+    # fixtures = ['test_data.json']
     def test__str__(self):
         """
 

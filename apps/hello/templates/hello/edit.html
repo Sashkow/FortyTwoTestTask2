@@ -11,7 +11,7 @@
 
 
 {% block content %}
-    <form id="post-form" enctype="multipart/form-data" action="">
+    <form id="post-form" enctype="multipart/form-data" action="{% url 'edit-ajax' %}" method="post">
         {% csrf_token %}
         <div class="left-subcolumn">
             <div>Name: {{form.name}}</div>
@@ -21,7 +21,7 @@
             <div>{{form.ava}}</div>
 
             {% if person.ava %}
-                <div><img src="{{person.ava.thumbnail.url}}"></div>
+                <div><img id="id_img" src="{{person.ava.thumbnail.url}}"></div>
             {% else %}
                 <div><img src="{% static "hello/img/default_ava.png" %}"></div>
             {% endif %}
@@ -41,7 +41,7 @@
             <br>
             <div>{{form.bio}}</div>
         </div>
-
+        <div id="results"></div>
         <input id="id_button" name="save_and_back_submit" type="submit" value="Save" style="display:inline-block;" />
         <div style="display:inline-block;"><a href="{% url 'main' %}">cancel</a></div>
     </form>

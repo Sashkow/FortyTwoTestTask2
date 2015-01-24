@@ -13,7 +13,7 @@ class RequestStoreMiddlewareTestCase(TestCase):
     """
     RequestStore middleware test case
     """
-    fixtures = ['test_data.json']
+    # fixtures = ['test_data.json']
     def setUp(self):
         self.factory = RequestFactory()
 

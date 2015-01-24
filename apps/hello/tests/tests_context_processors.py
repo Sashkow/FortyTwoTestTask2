@@ -12,7 +12,7 @@ class AddDjangoSettingsContextProcessorTestCase(TestCase):
     Test case for template context processor that adds
     django.settings to context
     """
-    fixtures = ['test_data.json']
+    # fixtures = ['test_data.json']
     def test_djago_settings_in_context(self):
         """
         test django_settings variable available from context

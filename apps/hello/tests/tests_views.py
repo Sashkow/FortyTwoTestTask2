@@ -211,13 +211,10 @@ class EditAjaxViewTestCase(TestCase):
          data={"name": "Beatlejuce"}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEquals(response._headers['content-type'],
                          ('Content-Type', 'application/json'))
-        self.assertTrue("Beatlejuce" in response.content)
+
+        self.assertTrue("success" in response.content)
         """
         test data in Models is updated after 'edit-ajax' post call
         """
-
         admin_user = User.objects.get(username='admin')
         self.assertEquals(admin_user.first_name, "Beatlejuce")
-
-
-        

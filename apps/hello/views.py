@@ -18,6 +18,7 @@ from django.contrib.auth import authenticate
 from django.contrib import auth
 
 import json
+from django.utils import simplejson
 
 def main(request):
     """
@@ -68,25 +69,49 @@ def edit(request):
     return render(request, "hello/edit.html", 
      {'form': form, 'person': person})
 
+def errors_to_json(errors):
+    """
+    Convert a Form error list to JSON::
+    """
+    return dict(
+            (k, map(unicode, v))
+            for (k,v) in errors.iteritems()
+        )
+
+def json_response(x):
+    import json
+    return HttpResponse(json.dumps(x, sort_keys=True, indent=2),
+                        content_type='application/json; charset=UTF-8')
 def edit_ajax(request):
     """
     a view that allows to save content of the main page without
     refreshing the page
     """
-    usr_name = request.POST['name']
-    person = Person.objects.get(user=request.user)
-    person.name = usr_name
-    person.save()
+    if request.method == 'POST':
+        
+        person = Person.objects.get(user=request.user)
+        
+        form = PersonForm(request.POST, request.FILES, instance=person)
+        if form.is_valid():
+            form.save()
+        else:
+            return json_response({
+                    'success': False,
+                    'errors': errors_to_json(form.errors),
+                    })
 
+        person = Person.objects.get(user=request.user)
 
-    response_data = {}
-    response_data['result'] = 'success'
-    response_data['name'] = person.name
+        return HttpResponse(
+                json.dumps({
+                    'success': True,
+                    'img_url': person.ava.thumbnail.url,
 
-    return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
+                    }),
+                content_type="application/json"
+            )
+
+    return HttpResponse("You shouldn't have come here.")
 
 def login(request):
     if request.method == 'POST':
@@ -97,3 +122,4 @@ def login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'hello/login.html', {'form': form})    
+

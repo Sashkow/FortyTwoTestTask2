@@ -17,4 +17,7 @@ class Command(BaseCommand):
         for model, amount in model_amount_dict.iteritems():
             writing = "Model %s: %s objects" % (model._meta.module_name, amount)
             self.stdout.write(writing)
+
+        for model, amount in model_amount_dict.iteritems():
+            writing = "Model %s: %s objects" % (model._meta.module_name, amount)
             self.stderr.write("error: " + writing)

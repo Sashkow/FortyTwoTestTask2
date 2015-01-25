@@ -54,7 +54,8 @@ class PersonFormTestCase(TestCase):
             self.assertEquals(User.objects.get(pk=person.user.pk).first_name, \
              "has_changed")
         else:
-            self.fail("personform not valid")
+            self.fail(personform.errors)
+            # self.fail("personform not valid")
 
     def test_image_uploads_on_save(self):
         """

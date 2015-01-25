@@ -65,8 +65,8 @@ def edit(request):
         return HttpResponseRedirect(reverse('main'))
     else:
         form = PersonForm(instance=person)
-        print form['email']
-        print form['birth_date']
+        # print form['email']
+        # print form['birth_date']
     
     return render(request, "hello/edit.html", 
      {'form': form, 'person': person})
@@ -83,7 +83,7 @@ def errors_to_json(errors):
 def json_response(x):
     import json
     return HttpResponse(json.dumps(x, sort_keys=True, indent=2),
-                        content_type='application/json; charset=UTF-8')
+                        content_type='application/json')
 def edit_ajax(request):
     """
     a view that allows to save content of the main page without

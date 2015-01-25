@@ -14,7 +14,7 @@ class PersonModelTestCase(TestCase):
     """
     test Person model
     """
-    fixtures = ['test_data.json']
+    # fixtures = ['test_data.json']
 
     def test_person__str__(self):
         """
@@ -31,7 +31,7 @@ class PersonModelTestCase(TestCase):
         test :model:`hello.Person` change affects :model:`auth.User` change
         """
         user = User.objects.get(username='admin')
-        person = Person(user=user)
+        person = Person.objects.get(user=user)
         self.assertEquals(person.name, "Olexandr")
         self.assertEquals(person.surname, "Lykhenko")
         self.assertEquals(person.email, "lykhenko.olexandr@gmail.com")
@@ -42,15 +42,25 @@ class PersonModelTestCase(TestCase):
         self.assertEquals(person.surname, "Trololo")
         self.assertEquals(person.email, "ololo@lol.lol")
 
+        self.assertEquals(user.first_name, "Olexandr")
+        self.assertEquals(user.last_name, "Lykhenko")
+        self.assertEquals(user.email, "lykhenko.olexandr@gmail.com")
+
+        person.save() #save person also saves user
+
+        user = User.objects.get(username='admin')
         self.assertEquals(user.first_name, "Ololoshka")
         self.assertEquals(user.last_name, "Trololo")
         self.assertEquals(user.email, "ololo@lol.lol")
 
 
+
 class RequestDataTestCase(TestCase):
-    fixtures = ['test_data.json']
+    # fixtures = ['test_data.json']
     def test__str__(self):
         """
+
+
         test __str__ outputs verbose object description
         """
         self.client.get(reverse('main'))

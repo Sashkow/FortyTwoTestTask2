@@ -200,3 +200,21 @@ class LoginViewTestCase(TestCase):
         self.assertEquals(response.status_code, 302)
         self.assertEquals('http://testserver/', response.url) 
 
+
+class EditAjaxViewTestCase(TestCase):
+    """
+    save form changes without page refreshing
+    """
+    def test_correct_json_on_post(self):
+        self.client.login(username='admin', password='admin') 
+        response = self.client.post(reverse('edit-ajax'),
+         data={"name": "Beatlejuce"}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        self.assertEquals(response._headers['content-type'],
+                         ('Content-Type', 'application/json'))
+
+        self.assertTrue("success" in response.content)
+        """
+        test data in Models is updated after 'edit-ajax' post call
+        """
+        admin_user = User.objects.get(username='admin')
+        self.assertEquals(admin_user.first_name, "Beatlejuce")

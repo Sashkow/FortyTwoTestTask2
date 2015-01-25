@@ -24,7 +24,7 @@ class GetPersonOrAdminUtilTestCase(TestCase):
     test util function that gets Person object for current User if
     authenticated or logins as admin and then gets Person object for admin 
     """
-    fixtures = ['test_data.json']
+    # fixtures = ['test_data.json']
 
     def setUp(self):
         self.factory = RequestFactory()

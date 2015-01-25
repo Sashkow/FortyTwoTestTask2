@@ -104,10 +104,17 @@ def edit_ajax(request):
 
         person = Person.objects.get(user=request.user)
 
+        if hasattr(person.ava, 'thumbnail'):
+            img_url = person.ava.thumbnail.url
+        else:
+            img_url = "/static/hello/img/default_ava.png"
+
+
+
         return HttpResponse(
                 json.dumps({
                     'success': True,
-                    'img_url': person.ava.thumbnail.url,
+                    'img_url': img_url,
 
                     }),
                 content_type="application/json"

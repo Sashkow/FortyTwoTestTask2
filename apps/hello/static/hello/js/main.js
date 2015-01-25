@@ -44,22 +44,29 @@ $(document).ready(function() {
 	            $('#results').html(data);
 	            
             	$('#id_button').val('Failed:(');
-			    $('input, textarea').prop( "disabled", false );
+			    $('input, textarea').prop( "disabl	ed", false );
 	        } 
     	};     
 	    $('#post-form').ajaxSubmit(options); 
 	};	
 
 	$('#post-form').on('submit', function(event){	
+		if ($('#ava-clear_id').is(":checked")) {
+			console.log("checked on");
+			// $("#id_ava").replaceWith($("#id_ava").clone());
+			$("#id_ava").val("") 
+		};
 	    create_post();
 	    return false;
 	});
+
+	
 }); 
 
 
 
 
-
+// 
 
 
 

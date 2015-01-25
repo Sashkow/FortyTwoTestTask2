@@ -19,6 +19,8 @@ from apps.hello.views import main, edit
 
 from django.contrib.sessions.middleware import SessionMiddleware
 
+from django.template import Template, Context
+
 def add_session_to_request(request):
     """Annotate a request object with a session"""
     middleware = SessionMiddleware()
@@ -81,25 +83,6 @@ class MainPageViewTestCase(TestCase):
         response = main(request)
 
         self.assertTrue('Leela' in str(response))
-
-    def test_template_loads_edit_link_tag(self):
-        """
-        test index.html {% load edit_link %} calls edit_link tag constructor
-        """
-        self.assertTrue(False)
-
-    def test_rendered_template_has_edit_link(self):
-        """
-        test index.html template line {% edit_link request.user %} is
-        replased by <a href="admin/hello/person/2/"></a> (where 2 is
-        current user's pk) in response.content 
-        """
-        self.client.login(username='admin', password='admin') 
-        response = self.client.get(reverse('main'))
-        self.assertTrue('<a href="admin/hello/person/' in response.content)
-
-
-
 
 
 class RequestDataViewTestCase(TestCase):

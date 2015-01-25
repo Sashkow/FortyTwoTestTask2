@@ -1,5 +1,6 @@
 {% extends "hello/base.html" %}
 {% load staticfiles%}
+{% load edit_link %}
 
 {% block pagetitle %} Main Page {% endblock %}
 
@@ -9,7 +10,9 @@
 
 
 {% block content %}
+        
         <div class="left-subcolumn">
+
             <div>Name: {{person.name}}</div>
             <div>Last name: {{person.surname}}</div>
             <div>Date of birth: {{person.birth_date}}</div>

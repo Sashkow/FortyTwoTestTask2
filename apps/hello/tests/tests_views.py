@@ -19,6 +19,8 @@ from apps.hello.views import main, edit
 
 from django.contrib.sessions.middleware import SessionMiddleware
 
+from django.template import Template, Context
+
 def add_session_to_request(request):
     """Annotate a request object with a session"""
     middleware = SessionMiddleware()

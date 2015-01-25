@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.hello.models import Person
+from apps.hello.models import Person,RequestData
 from apps.hello.forms import AdminPersonForm
 
 
@@ -19,3 +19,4 @@ class PersonAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Person, PersonAdmin)
+admin.site.register(RequestData)

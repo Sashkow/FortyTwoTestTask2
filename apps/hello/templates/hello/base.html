@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         {% load staticfiles %}        
+        {% load edit_link %}
         <meta charset="utf-8">
         <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <title>{% block pagetitle%} 42 Coffee Cups Test Assignment {% endblock %}</title>
@@ -56,7 +57,9 @@
             </div>
             <div style="display:inline-block;">
                 <a name="edit_page_link" href="{% url 'edit' %}">edit</a>
+                {% edit_link person %}
             </div>
+
             <div style="display:inline-block;">
                 <a name="requests_page_link" href="{% url 'requests' %}">requests</a>
             </div>

@@ -24,7 +24,7 @@ $(document).ready(function() {
 						        var value=json.errors[key];
 								resultsHtml+="<div>" + String(key) + " : " + String(value) + "</div>";
 						    }
-}
+						}
 	        			$("#results").html(resultsHtml);
 	        			$('#id_button').val('Failed:(');
 	        		}

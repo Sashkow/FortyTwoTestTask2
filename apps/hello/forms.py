@@ -24,7 +24,7 @@ class AdminPersonForm(ModelForm):
     surname = forms.CharField(max_length=30, required=False)
     email = forms.EmailField(required=False)
     birth_date = forms.DateField(widget=MySelectDateWidget(
-        years=range(1900, date.today().year + 1)))
+        years=range(1900, date.today().year + 1)), required=False)
 
 
 

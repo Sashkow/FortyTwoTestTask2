@@ -15,3 +15,4 @@ class Command(BaseCommand):
 
         self.stdout.write('Successfully modified "%s"' % name)
         self.stdout.write('"%s" is now commanded: %s %s' % (name, person.name, person.surname))
+

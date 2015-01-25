@@ -10,7 +10,6 @@ def do_edit_link(parser, token):
     """
     compile funcion for edit_link tag 
     """
-
     try:
         # split_contents() knows not to split quoted strings.
         tag_name, object_string = token.split_contents()

@@ -1,18 +1,20 @@
 from django.core.management.base import BaseCommand, CommandError
 from apps.hello.models import Person
 
+from apps.hello.utils import list_models
+
 class Command(BaseCommand):
+    """
+    List of all models, known to ORM with amout of objects in them
+    """
     def handle(self, *args, **options):
+        """
+        command's hande method
+        """
         # for poll_id in args:
-        try:
-            name = 'admin'
-            Person = Person.objects.get(user__username=name)
-        except Person.DoesNotExist:
-            raise CommandError('Person "" does not exist' % name)
-
-        person.name = "Commanded"
-        person.save()
-
-        self.stdout.write('Successfully modified "%s"' % name)
-        self.stdout.write('"%s" is now commanded: %s %s' % (name, person.name, person.surname))
-
+        model_amount_dict = list_models()
+        self.stdout.write("List of all models, known to ORM with amout of objects in them")
+        for model, amount in model_amount_dict.iteritems():
+            writing = "Model %s: %s objects" % (model._meta.module_name, amount)
+            # self.stdout.write(writing)
+            # self.stderr.write("error: " + writing)

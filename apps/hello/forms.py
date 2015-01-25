@@ -2,6 +2,10 @@ from django import forms
 from django.forms import ModelForm
 from apps.hello.models import Person
 
+from apps.hello.widgets import MySelectDateWidget
+from django.forms import extras
+
+from datetime import date
 
 class AdminPersonForm(ModelForm):
     """
@@ -19,6 +23,11 @@ class AdminPersonForm(ModelForm):
     name = forms.CharField(max_length=30, required=False)
     surname = forms.CharField(max_length=30, required=False)
     email = forms.EmailField(required=False)
+    birth_date = forms.DateField(widget=MySelectDateWidget(
+        years=range(1900, date.today().year + 1)))
+
+
+
 
     def __init__(self, *args, **kwargs):
         """
@@ -30,7 +39,10 @@ class AdminPersonForm(ModelForm):
             initial['name'] = instance.name
             initial['surname'] = instance.surname
             initial['email'] = instance.email
+
             kwargs['initial'] = initial
+
+
         super(AdminPersonForm, self).__init__(*args, **kwargs)
 
     def save(self, commit=True):

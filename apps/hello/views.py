@@ -65,6 +65,8 @@ def edit(request):
         return HttpResponseRedirect(reverse('main'))
     else:
         form = PersonForm(instance=person)
+        print form['email']
+        print form['birth_date']
     
     return render(request, "hello/edit.html", 
      {'form': form, 'person': person})

@@ -2,6 +2,8 @@
 //     <input type="text" class="vDateField">
 //     <input type="text" class="vTimeField">
 
+console.log("here");
+
 var DateTimeShortcuts = {
     calendars: [],
     calendarInputs: [],

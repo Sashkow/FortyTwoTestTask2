@@ -7,6 +7,8 @@
 
 {% block csslinks %} 
        <script src="{% static 'hello/js/main.js' %}"></script>
+       
+       {{form.media}}
 {% endblock %}
 
 
@@ -17,6 +19,7 @@
             <div>Name: {{form.name}}</div>
             <div>Last name: {{form.surname}}</div>
             <div>Date of birth: {{form.birth_date}}</div>
+            <!-- <div>NEW Date of birth: {{form.new_birth_date}}</div> -->
             <div>Photo:</div>
             <div>{{form.ava}}</div>
 

@@ -74,10 +74,3 @@ class PersonFormTestCase(TestCase):
         im = Image.open(settings.MEDIA_ROOT + '/persons/test.thumbnail.jpg')
         thumbnail_size = Person.thumbnail_size
         self.assertEquals((thumbnail_size,thumbnail_size), im.size)
-
-        
-
-             
-        
-        
-

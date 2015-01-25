@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 	        			$("#id_img").attr('src', json.img_url)
 				    	$('#id_button').val('Saved:)');	
-				    	$("#results").html(json.img_url);
+				    	$("#results").html("");
 	        		}
 	        		else{
 	        			

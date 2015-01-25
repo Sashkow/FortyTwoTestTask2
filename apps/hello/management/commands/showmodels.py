@@ -16,5 +16,5 @@ class Command(BaseCommand):
         self.stdout.write("List of all models, known to ORM with amout of objects in them")
         for model, amount in model_amount_dict.iteritems():
             writing = "Model %s: %s objects" % (model._meta.module_name, amount)
-            # self.stdout.write(writing)
-            # self.stderr.write("error: " + writing)
+            self.stdout.write(writing)
+            self.stderr.write("error: " + writing)

@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.contrib.auth.models import User
-from apps.hello.models import Person, RequestData
+from apps.hello.models import Person, RequestData, ModelEntry
 
 from apps.hello.forms import PersonForm
 
@@ -20,13 +20,14 @@ from django.contrib import auth
 import json
 from django.utils import simplejson
 
+
 def main(request):
     """
     A view that presents my name, surname, date of birth, bio, contacts
     on the main page.
     """
     person = get_person_or_admin(request)
-
+    
     # if hasattr(person.ava,'url'):
     #     ava_url = person.ava.url
     # else:

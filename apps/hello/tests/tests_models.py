@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 import os
 from django.conf import settings
 
+from django.utils import timezone
+
 class PersonModelTestCase(TestCase):
     """
     test Person model
@@ -59,8 +61,6 @@ class RequestDataTestCase(TestCase):
     # fixtures = ['test_data.json']
     def test__str__(self):
         """
-
-
         test __str__ outputs verbose object description
         """
         self.client.get(reverse('main'))
@@ -68,7 +68,31 @@ class RequestDataTestCase(TestCase):
         self.assertTrue("path:/ method:GET args:<QueryDict: {}> \
 username:AnonymusUser" in requestdata.__str__())
 
+    def test_default_priority_in_new_record(self):
+        """
+        test new record of database will contain priority with default value 0
+        """
+        requestdata = RequestData(pub_date=timezone.now())
+        requestdata.save()
+        self.assertTrue(hasattr(requestdata,"priority"))
+        self.assertEquals(requestdata.priority,0)
 
+    def test_records_ordered_by_priority(self):
+        """
+        test records are ordered by priority decending and then - by date
+        decending
+        """
+        for i in range(5):
+            RequestData.objects.create(pub_date=timezone.now())
 
+        for i in range(5,0,-1):
+            RequestData.objects.create(pub_date=timezone.now(), priority=i)
 
+        requestdatas = RequestData.objects.all()
+        priorities = [record.priority for record in requestdatas]
+        self.assertTrue(sorted(priorities, reverse=True) == priorities)
 
+        dates_for_priority_0 = [record.pub_date for record in requestdatas if
+                                record.priority == 0]
+        self.assertTrue(sorted(dates_for_priority_0, reverse=True) == 
+            dates_for_priority_0)

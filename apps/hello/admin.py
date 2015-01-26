@@ -18,6 +18,17 @@ class PersonAdmin(admin.ModelAdmin):
     form = AdminPersonForm
 
 
+class RequestDataAdmin(admin.ModelAdmin):
+    """
+    overriden RequestData ModelAdmin class
+    """
+
+    list_display = ('id', 'method', 'args', 'username', \
+     'pub_date', 'priority')
+
+    ordering = ('-priority', '-pub_date')
+
+
 admin.site.register(Person, PersonAdmin)
-admin.site.register(RequestData)
+admin.site.register(RequestData, RequestDataAdmin)
 admin.site.register(ModelEntry)

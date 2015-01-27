@@ -80,14 +80,14 @@ class RequestData(models.Model):
         """
         RequestModelMeta class
         """
-        # ordering = ('-priority', '-pub_date')
+        ordering = ('-priority', '-pub_date')
 
     path = models.CharField(max_length=2000, null=True, blank=True)
     method = models.CharField(max_length=4, null=True, blank=True)
     args = models.TextField(null=True, blank=True)
     username = models.CharField(max_length=30, null=True, blank=True)
     pub_date = models.DateTimeField('date published')
-    priority = models.PositiveIntegerField(default=1)
+    priority = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return " ".join([str(field.name) + ":" + \
